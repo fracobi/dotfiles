@@ -1,97 +1,157 @@
-# dotfiles
+# fracobi/dotfiles
 
-Personal Linux dotfiles for my Hyprland-based desktop setup.
+Personal Linux setup based on:
 
-These configurations are managed with **Git** and **GNU Stow**, so each module can be symlinked into the correct location in the home directory.
-
-## Setup
-
-Main components:
-
-* Hyprland with Lua configuration
-* Hyprlock, Hypridle and Hyprpaper
+* Hyprland
 * Quickshell / Noctalia
 * Kitty
-* Zsh
-* Starship
+* Zsh + Starship
 * Fastfetch
-* GTK / Qt / Kvantum theming
+* GNU Stow
 
-## Structure
+The goal of this repository is to provide a reproducible and easy-to-bootstrap Arch/CachyOS setup with minimal manual configuration.
+
+---
+
+# Features
+
+* Hyprland desktop setup
+* Modular Lua-based Hyprland configuration
+* Quickshell / Noctalia shell
+* Kitty terminal configuration
+* Zsh + Starship prompt
+* Fastfetch configuration
+* Clipboard history support
+* Screenshot utilities
+* Brave browser configuration
+* Automatic package installation
+* Automatic config backup
+* GNU Stow-based dotfiles management
+
+---
+
+# Installation
+
+## Arch / CachyOS
+
+```bash
+sudo pacman -S --needed git
+git clone https://github.com/fracobi/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./bootstrap-arch.sh
+```
+
+After installation:
+
+```bash
+reboot
+```
+
+---
+
+# What the bootstrap script does
+
+`bootstrap-arch.sh` automatically:
+
+* updates the system
+* installs required pacman packages
+* installs `paru` if missing
+* installs AUR packages
+* applies dotfiles using GNU Stow
+* backs up existing configs automatically
+* sets `zsh` as the default shell
+
+---
+
+# Repository Structure
 
 ```text
 dotfiles/
-├── fastfetch/
 ├── hypr/
 ├── kitty/
-├── noctalia/
-├── packages/
-├── quickshell/
+├── zsh/
 ├── starship/
+├── fastfetch/
+├── noctalia/
+├── quickshell/
 ├── theming/
-└── zsh/
+├── packages/
+│   ├── arch.txt
+│   └── aur.txt
+├── install.sh
+└── bootstrap-arch.sh
 ```
 
-Each directory is a Stow package. For example:
+---
+
+# Package Management
+
+## Official repository packages
+
+Packages installed through pacman are listed in:
+
+```text
+packages/arch.txt
+```
+
+---
+
+# Dotfiles Management
+
+This repository uses GNU Stow.
+
+Each folder represents a package that gets symlinked into `$HOME`.
+
+Example:
+
+```bash
+stow hypr
+```
+
+creates symlinks from:
 
 ```text
 hypr/.config/hypr
 ```
 
-is linked to:
+to:
 
 ```text
 ~/.config/hypr
 ```
 
-## Installation
+---
 
-Clone the repository:
 
-```bash
-git clone https://github.com/fracobi/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-```
+# VM / QEMU Notes
 
-Install the required packages manually or use the Fedora package list as a reference:
+Running Hyprland inside QEMU/virt-manager may require additional configuration.
 
-```bash
-packages/fedora.txt
-```
+Known limitations:
 
-Apply the configuration:
+* 3D acceleration may not work depending on host configuration
+* monitor scaling and resolutions can behave differently
+* Quickshell rendering may be degraded without GPU acceleration
 
-```bash
-./install.sh
-```
+---
 
-Or manually with Stow:
+# Requirements
 
-```bash
-stow hypr
-stow kitty
-stow starship
-stow zsh
-stow fastfetch
-stow noctalia
-stow quickshell
-stow theming
-```
+Mainly tested on:
 
-## Notes
+* CachyOS
+* Fedora
 
-This repository is tailored to my personal setup and is not intended to be a universal installation framework.
+Other distros are currently unsupported.
 
-Some configuration values are machine-specific, especially:
+---
 
-* monitor names
-* workspace rules
-* scaling
-* hardware-specific bindings
-* local paths
+# Screenshots
 
-Review the files before applying them on a different machine.
+TODO
 
-## License
+---
 
-No license is currently provided. This repository is mainly intended as a personal configuration backup.
+# License
+
+MIT License
