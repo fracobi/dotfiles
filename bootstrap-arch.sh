@@ -29,8 +29,17 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 
 echo "== Installing AUR packages =="
+
 if [ -f packages/aur.txt ]; then
-  paru -S --needed - < packages/aur.txt
+  mapfile -t AUR_PACKAGES < <(grep -vE '^\s*($|#)' packages/aur.txt || true)
+
+  if [ "${#AUR_PACKAGES[@]}" -gt 0 ]; then
+    paru -S --needed --noconfirm "${AUR_PACKAGES[@]}"
+  else
+    echo "No AUR packages to install."
+  fi
+else
+  echo "No packages/aur.txt found."
 fi
 
 echo "== Applying dotfiles =="
