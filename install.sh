@@ -3,7 +3,10 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+TARGET_DIR="${1:-$HOME}"
+
 echo "== Dotfiles install =="
+echo "Target: $TARGET_DIR"
 
 if ! command -v stow >/dev/null 2>&1; then
   echo "GNU Stow is not installed."
@@ -26,7 +29,7 @@ PACKAGES=(
 for package in "${PACKAGES[@]}"; do
   if [ -d "$package" ]; then
     echo "Stowing $package..."
-    stow "$package"
+    stow -t "$TARGET_DIR" "$package"
   else
     echo "Skipping $package: directory not found"
   fi
