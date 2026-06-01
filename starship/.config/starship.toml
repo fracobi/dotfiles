@@ -1,0 +1,45 @@
+add_newline = false
+
+format = "$time $username $directory$git_branch$git_status$python $character"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "white dimmed"
+format = "[ $time]($style)"
+
+[username]
+show_always = true
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style) in"
+
+[directory]
+style = "blue"
+truncation_length = 3
+truncate_to_repo = false
+format = " [$path]($style)"
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+
+[git_branch]
+symbol = "  "
+style = "purple"
+format = "[$symbol$branch]($style)"
+
+[git_status]
+style = "red"
+format = "([$all_status$ahead_behind]($style))"
+
+[python]
+symbol = "  "
+style = "yellow"
+format = '[${symbol}(\($virtualenv\) )]($style)'
+
+[character]
+success_symbol = "[ ❯](bold green)"
+error_symbol = "[ ✗](bold red)"
