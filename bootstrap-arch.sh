@@ -36,5 +36,10 @@ fi
 echo "== Applying dotfiles =="
 ./install.sh
 
+echo "== Setting Zsh as default shell =="
+if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$(command -v zsh)" ]; then
+  chsh -s "$(command -v zsh)"
+fi
+
 echo "== Done =="
 echo "You may need to log out and log back in."
