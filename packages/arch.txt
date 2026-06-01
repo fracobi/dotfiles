@@ -12,6 +12,7 @@ hyprland
 hyprlock
 hypridle
 hyprpaper
+hyprshot
 xdg-desktop-portal-hyprland
 xorg-xwayland
 noctalia-qs
