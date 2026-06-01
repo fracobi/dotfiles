@@ -42,15 +42,8 @@ alias virtual-monitor-on='hyprctl output create headless WINSCREEN; hyprctl keyw
 alias virtual-monitor-off='hyprctl output remove WINSCREEN'
 alias virtual-monitor-fix='systemctl --user restart pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland'
 
-#Rclone
-alias sync-now='systemctl --user start rclone-docs.service'
-alias sync-status='systemctl --user status rclone-docs.service'
-alias sync-timer='systemctl --user status rclone-docs.timer'
-alias sync-live='journalctl --user -fu rclone-docs.service'
-alias sync-log='journalctl --user -u rclone-docs.service -n 50 --no-pager'
-alias sync-fix='rm -rf ~/.cache/rclone/bisync && rclone bisync ~/Documenti googledrive:Documenti --filter-from ~/Scripts/rclone-docs.filter --resync --progress -v'
-alias sync-unlock='rm -f ~/.cache/rclone/bisync/home_cobi_Documenti..googledrive_Documenti.lck'
-alias sync-recover='rm -f ~/.cache/rclone/bisync/*.lck && rclone bisync ~/Documenti googledrive:Documenti --filter-from ~/Scripts/rclone-docs.filter --resync --progress -v'
+# Local/private aliases and machine-specific settings
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
 # Brave Reset
 alias fix-brave="rm -f ~/.config/BraveSoftware/Brave-Browser/Singleton*"
