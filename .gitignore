@@ -3,3 +3,6 @@ hypr/.config/hypr/OldConfig/
 # Nested git repositories inside copied configs
 quickshell/.config/quickshell/**/.git/
 quickshell/.config/quickshell/**/.github/
+
+# GTK local bookmarks
+theming/.config/gtk-3.0/bookmarks
