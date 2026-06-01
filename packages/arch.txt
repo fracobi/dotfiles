@@ -8,6 +8,7 @@ fastfetch
 btop
 dolphin
 thunar
+brave-bin
 hyprland
 hyprlock
 hypridle
