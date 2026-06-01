@@ -48,6 +48,7 @@ PACKAGES=(
   kitty
   starship
   zsh
+  brave
   fastfetch
   noctalia
   quickshell
