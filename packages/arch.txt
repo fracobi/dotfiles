@@ -14,7 +14,14 @@ hypridle
 hyprpaper
 xdg-desktop-portal-hyprland
 xorg-xwayland
-quickshell
+noctalia-qs
+noctalia-shell
+thefuck
+pamixer
+pavucontrol
+cava
+zsh-autosuggestions
+zsh-syntax-highlighting
 wl-clipboard
 cliphist
 brightnessctl

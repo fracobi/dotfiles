@@ -18,18 +18,29 @@ eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
 # ---------- THE FUCK ----------
-eval "$(thefuck --alias)"
-eval "$(thefuck --alias fk)"
+# ---------- THE FUCK ----------
+if command -v thefuck >/dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+  eval "$(thefuck --alias fk)"
+fi
 
 # ---------- AUTOCOMPLETE ----------
 autoload -Uz compinit
 compinit
 
-# ---------- AUTOSUGGESTIONS ----------
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# --------Zsh Autosuggestions----------
+if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
-# ---------- SYNTAX HIGHLIGHT ----------
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ---------Zsh syntax highlighting---------
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # ---------- ALIAS ----------
 
