@@ -528,10 +528,10 @@ Item {
   function switchToWorkspace(workspace) {
     try {
       if (workspace.name) {
-        Hyprland.dispatch(`workspace ${workspace.name}`);
+        Hyprland.dispatch(`hl.dsp.focus({ workspace = "${workspace.name}" })`);
         return;
       }
-      Hyprland.dispatch(`workspace ${workspace.idx}`);
+      Hyprland.dispatch(`hl.dsp.focus({ workspace = "${workspace.idx}" })`);
     } catch (e) {
       Logger.e("HyprlandService", "Failed to switch workspace:", e);
     }

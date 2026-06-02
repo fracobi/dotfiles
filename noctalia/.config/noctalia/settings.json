@@ -348,7 +348,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/cobi/Immagini/Schermate/Foto_profilo.jpg",
+        "avatarImage": "/home/cobi/Immagini/Foto_profilo.jpg",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
