@@ -125,6 +125,13 @@ hl.animation({
 })
 
 hl.animation({
+  leaf = "workspaces",
+  enabled = true,
+  speed = "4.2",
+  bezier = "default", 
+})
+
+hl.animation({
   leaf = "border",
   enabled = true,
   speed = 5.39,
