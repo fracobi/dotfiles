@@ -1,0 +1,14 @@
+[Unit]
+Description=Quickshell Overview
+After=graphical-session.target hyprland-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 2
+ExecStart=/usr/bin/env qs -c overview
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

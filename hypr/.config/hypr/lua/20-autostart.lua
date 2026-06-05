@@ -1,8 +1,12 @@
-
 local home = os.getenv("HOME")
+
+hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
+hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
 
 hl.on("hyprland.start", function()
   -- hl.exec_cmd("waybar")
+
+  hl.exec_cmd("systemctl --user restart quickshell-overview.service")
 
   hl.exec_cmd(home .. "/Scripts/notification-sound.sh")
 
@@ -18,7 +22,6 @@ hl.on("hyprland.start", function()
 
   hl.exec_cmd("hypridle")
 
-  hl.exec_cmd("qs -c overview")
   hl.exec_cmd("qs -c noctalia-shell")
 
   -- hl.exec_cmd("numlockx on")

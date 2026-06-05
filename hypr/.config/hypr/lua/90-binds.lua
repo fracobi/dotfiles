@@ -41,6 +41,8 @@ bind(mainMod .. " + M", hl.dsp.window.fullscreen({
   action = "toggle",
 }))
 
+
+
 -- fullscreen, 0 = real fullscreen
 bind(mainMod .. " + F", hl.dsp.window.fullscreen({
   mode = "fullscreen",
