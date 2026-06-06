@@ -100,9 +100,6 @@ Item {
       sourceComponent: Component {
         NText {
           text: {
-            if (workspace && workspace.idx === 99) {
-                return "WA";
-            }
             if (workspace.name && workspace.name.length > 0) {
               if (labelMode === "name") {
                 return workspace.name.substring(0, characterCount);

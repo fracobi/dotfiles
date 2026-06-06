@@ -30,6 +30,7 @@ bind(mainMod .. " + B", exec(browser))
 bind(mainMod .. " + RETURN", exec(terminal))
 bind(mainMod .. " + E", exec(fileManager))
 bind(mainMod .. " + Y", exec("kitty --title spf -e spf"))
+bind(mainMod .. " + W", hl.dsp.focus({ workspace = "99" })) --whatsapp workspace
 
 -- Window manipulation
 bind(mainMod .. " + mouse:274", hl.dsp.window.close())

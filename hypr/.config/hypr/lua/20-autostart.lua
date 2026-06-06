@@ -24,5 +24,8 @@ hl.on("hyprland.start", function()
 
   hl.exec_cmd("qs -c noctalia-shell")
 
+-- WhatsApp Web PWA in background
+  hl.exec_cmd("sh -c 'sleep 10 && gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default'")
+
   -- hl.exec_cmd("numlockx on")
 end)

@@ -72,3 +72,12 @@ hl.window_rule({
   move = { 20, "monitor_h-120" },
   float = true,
 })
+
+-- WhatsApp Web PWA: workspace tecnico per notifiche
+hl.window_rule({
+  name = "whatsapp-web-background",
+  match = {
+    class = "^(brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default)$",
+  },
+  workspace = "99 silent",
+})

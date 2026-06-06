@@ -101,7 +101,7 @@
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
                     "id": "Workspace",
-                    "labelMode": "index",
+                    "labelMode": "name",
                     "occupiedColor": "secondary",
                     "pillSize": 0.6000000000000001,
                     "showApplications": false,
@@ -173,6 +173,23 @@
                     "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "linear"
+                },
+                {
+                    "defaultSettings": {
+                        "embeddedMirrorAudioEnabled": false,
+                        "hideIfNoDeviceConnected": false,
+                        "iconColor": "none",
+                        "phoneSizePresetIndex": 0,
+                        "phoneSizePresetKey": "small",
+                        "phoneSizeStepDirection": 1,
+                        "wirelessAdbConnectHost": "",
+                        "wirelessAdbConnectPort": "",
+                        "wirelessAdbDevices": {
+                        },
+                        "wirelessAdbPairHost": "",
+                        "wirelessAdbPairPort": ""
+                    },
+                    "id": "plugin:androidconnect"
                 },
                 {
                     "hideWhenZero": false,

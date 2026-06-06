@@ -170,7 +170,7 @@ Item {
       return Style.toOdd(d * factor);
     }
 
-    var displayText = ws.idx === 99 ? "WA" : ws.idx.toString();
+    var displayText = ws.idx.toString();
 
     if (ws.name && ws.name.length > 0) {
       if (root.labelMode === "name") {
@@ -928,16 +928,15 @@ Item {
           anchors.centerIn: parent
 
           text: {
-            const label = groupedContainer.workspaceModel.displayName || groupedContainer.workspaceModel.name || "";
-            if (label.length > 0) {
+            if (groupedContainer.workspaceModel.name && groupedContainer.workspaceModel.name.length > 0) {
               if (root.labelMode === "name") {
-                return label.substring(0, root.characterCount);
+                return groupedContainer.workspaceModel.name.substring(0, root.characterCount);
               }
               if (root.labelMode === "index+name") {
-                return (groupedContainer.workspaceModel.idx.toString() + label.substring(0, 1));
+                return (groupedContainer.workspaceModel.idx.toString() + groupedContainer.workspaceModel.name.substring(0, 1));
               }
             }
-            return groupedContainer.workspaceModel.idx === 99 ? "WA" : groupedContainer.workspaceModel.idx.toString();
+            return groupedContainer.workspaceModel.idx.toString();
           }
 
           family: Settings.data.ui.fontFixed
