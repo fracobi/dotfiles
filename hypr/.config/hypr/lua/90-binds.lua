@@ -50,9 +50,12 @@ bind(mainMod .. " + F", hl.dsp.window.fullscreen({
   action = "toggle",
 }))
 
-bind(mainMod .. " + V", hl.dsp.window.float({
-  action = "toggle",
-}))
+--Floating Windows
+-- - se la finestra è unica nel workspace: float + resize + center
+-- - se ci sono più finestre: solo float, mantenendo posizione/dimensione
+bind(mainMod .. " + V", exec("/home/cobi/.config/hypr/scripts/toggle-float-smart.sh"))
+
+
 
 bind(mainMod .. " + SHIFT + left", hl.dsp.window.swap({ direction = "l" }))
 bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "r" }))
@@ -196,6 +199,32 @@ bind(mainMod .. " + mouse_up", focus_workspace("e-1"))
 -- Mouse move/resize
 bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+bind(mainMod .. " + ALT + mouse:272", hl.dsp.window.resize(), { mouse = true })
+
+-- Resize da tastiera
+bind(mainMod .. " + ALT + right", hl.dsp.window.resize({
+  x = 40,
+  y = 0,
+  relative = true,
+}), { repeating = true })
+
+bind(mainMod .. " + ALT + left", hl.dsp.window.resize({
+  x = -40,
+  y = 0,
+  relative = true,
+}), { repeating = true })
+
+bind(mainMod .. " + ALT + down", hl.dsp.window.resize({
+  x = 0,
+  y = 40,
+  relative = true,
+}), { repeating = true })
+
+bind(mainMod .. " + ALT + up", hl.dsp.window.resize({
+  x = 0,
+  y = -40,
+  relative = true,
+}), { repeating = true })
 
 -- Audio / brightness
 bind(
