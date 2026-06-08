@@ -16,6 +16,5 @@ wl-clipboard
 cliphist
 brightnessctl
 playerctl
-swaync
 qt6ct
 kvantum
