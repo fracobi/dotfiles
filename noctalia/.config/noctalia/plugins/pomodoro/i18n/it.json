@@ -1,0 +1,38 @@
+{
+  "panel": {
+    "long-break": "Pausa lunga",
+    "pause": "Pausa",
+    "reset": "Ripristina",
+    "reset-all": "Ripristina tutto",
+    "resume": "Riprendi",
+    "session": "Sessione",
+    "settings": "Impostazioni widget",
+    "short-break": "Pausa breve",
+    "skip": "Salta",
+    "start": "Avvia",
+    "title": "Pomodoro",
+    "work": "Lavoro"
+  },
+  "settings": {
+    "auto-start-breaks": "Avvio automatico delle pause",
+    "auto-start-breaks-desc": "Avvia automaticamente il timer della pausa dopo una sessione di lavoro",
+    "auto-start-work": "Avvio automatico del lavoro",
+    "auto-start-work-desc": "Avvia automaticamente il timer di lavoro dopo una pausa",
+    "compact-mode": "Modalità compatta",
+    "compact-mode-desc": "Aspetto più compatto e minimale per il widget",
+    "long-break-duration": "Durata della pausa lunga",
+    "long-break-duration-desc": "Durata delle pause lunghe in minuti",
+    "sessions-before-long-break": "Sessioni prima della pausa lunga",
+    "sessions-before-long-break-desc": "Numero di sessioni di lavoro prima di una pausa lunga",
+    "short-break-duration": "Durata della pausa breve",
+    "short-break-duration-desc": "Durata delle pause brevi in minuti",
+    "work-duration": "Durata del lavoro",
+    "work-duration-desc": "Durata di ogni sessione di lavoro in minuti"
+  },
+  "toast": {
+    "break-finished": "Pausa terminata! Pronto a concentrarti?",
+    "long-break-finished": "Pausa lunga terminata! Pronto per un nuovo ciclo?",
+    "title": "Pomodoro",
+    "work-finished": "Sessione di lavoro completata! È il momento di una pausa."
+  }
+}
