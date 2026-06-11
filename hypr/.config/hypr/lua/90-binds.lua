@@ -4,6 +4,7 @@ local mainMod = vars.mainMod or "SUPER"
 local terminal = vars.terminal or "kitty"
 local fileManager = vars.fileManager or "thunar"
 local browser = vars.browser or "brave-browser"
+local currentLayout = "scrolling"
 
 -- Helpers
 local function bind(keys, dispatcher, flags)
@@ -21,6 +22,39 @@ end
 local function move_to_workspace(workspace)
   return hl.dsp.window.move({ workspace = tostring(workspace) })
 end
+local function set_layout(layout)
+  currentLayout = layout
+
+  hl.config({
+    general = {
+      layout = layout,
+    },
+  })
+end
+
+local function resize_window(x, y)
+  hl.dispatch(hl.dsp.window.resize({
+    x = x,
+    y = y,
+    relative = true,
+  }))
+end
+
+local function smart_horizontal_action(direction)
+  if currentLayout == "scrolling" then
+    if direction == "r" then
+      hl.dispatch(hl.dsp.layout("focus r"))
+    else
+      hl.dispatch(hl.dsp.layout("focus l"))
+    end
+  else
+    if direction == "r" then
+      resize_window(40, 0)
+    else
+      resize_window(-40, 0)
+    end
+  end
+end
 
 -- Lock
 bind(mainMod .. " + SHIFT + M", exec("hyprlock"))
@@ -36,15 +70,13 @@ bind(mainMod .. " + W", hl.dsp.focus({ workspace = "99" })) --whatsapp workspace
 bind(mainMod .. " + mouse:274", hl.dsp.window.close())
 bind(mainMod .. " + A", hl.dsp.window.close())
 
--- fullscreen, 1 = maximized
+-- Maximized windows
 bind(mainMod .. " + M", hl.dsp.window.fullscreen({
   mode = "maximized",
   action = "toggle",
 }))
 
-
-
--- fullscreen, 0 = real fullscreen
+--Fullscreen windows
 bind(mainMod .. " + F", hl.dsp.window.fullscreen({
   mode = "fullscreen",
   action = "toggle",
@@ -72,8 +104,8 @@ bind(mainMod .. " + D", exec("~/.config/eww/toggle-dashboard.sh"))
 bind(mainMod .. " + escape", exec("~/.config/eww/close-dashboard.sh"))
 
 -- Workspace navigation
-bind(mainMod .. " + CTRL + right", focus_workspace("e+1"))
-bind(mainMod .. " + CTRL + left", focus_workspace("e-1"))
+bind(mainMod .. " + CTRL + down", focus_workspace("e+1"))
+bind(mainMod .. " + CTRL + up", focus_workspace("e-1"))
 
 bind(mainMod .. " + P", hl.dsp.window.pseudo({
   action = "toggle",
@@ -81,6 +113,30 @@ bind(mainMod .. " + P", hl.dsp.window.pseudo({
 
 bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 bind(mainMod .. " + TAB", exec("qs ipc -c overview call overview toggle"))
+
+-- Layout switching
+bind(mainMod .. " + ALT + S", function()
+  set_layout("scrolling")
+end)
+
+bind(mainMod .. " + ALT + M", function()
+  set_layout("master")
+end)
+
+bind(mainMod .. " + ALT + D", function()
+  set_layout("dwindle")
+end)
+
+-- Scrolling Layout column width
+bind(mainMod .. " + CTRL + RIGHT", hl.dsp.layout("colresize +conf"))
+bind(mainMod .. " + CTRL + LEFT",  hl.dsp.layout("colresize -conf"))
+
+--Plugin ScrollOverview come Niri
+hl.bind(mainMod .. " + Q", function()
+    if hl.plugin and hl.plugin.scrolloverview then
+        hl.plugin.scrolloverview.overview("toggle")
+    end
+end)
 
 -- Noctalia
 bind(mainMod .. " + SPACE", exec("qs -c noctalia-shell ipc call launcher toggle"))
@@ -201,30 +257,22 @@ bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 bind(mainMod .. " + ALT + mouse:272", hl.dsp.window.resize(), { mouse = true })
 
--- Resize da tastiera
-bind(mainMod .. " + ALT + right", hl.dsp.window.resize({
-  x = 40,
-  y = 0,
-  relative = true,
-}), { repeating = true })
+-- Resize / focus contestuale da tastiera
+bind(mainMod .. " + ALT + right", function()
+  smart_horizontal_action("r")
+end, { repeating = true })
 
-bind(mainMod .. " + ALT + left", hl.dsp.window.resize({
-  x = -40,
-  y = 0,
-  relative = true,
-}), { repeating = true })
+bind(mainMod .. " + ALT + left", function()
+  smart_horizontal_action("l")
+end, { repeating = true })
 
-bind(mainMod .. " + ALT + down", hl.dsp.window.resize({
-  x = 0,
-  y = 40,
-  relative = true,
-}), { repeating = true })
+bind(mainMod .. " + ALT + down", function()
+  resize_window(0, 40)
+end, { repeating = true })
 
-bind(mainMod .. " + ALT + up", hl.dsp.window.resize({
-  x = 0,
-  y = -40,
-  relative = true,
-}), { repeating = true })
+bind(mainMod .. " + ALT + up", function()
+  resize_window(0, -40)
+end, { repeating = true })
 
 -- Audio / brightness
 bind(
