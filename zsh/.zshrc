@@ -18,7 +18,6 @@ eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
 # ---------- THE FUCK ----------
-# ---------- THE FUCK ----------
 if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
   eval "$(thefuck --alias fk)"
@@ -47,6 +46,13 @@ fi
 alias ls="eza"
 alias ll="eza -lah"
 alias cat="bat"
+
+#MimeApp Nocatilia 
+
+alias mime-app='qs -c noctalia-shell ipc call plugin:mimeapp-gui openPanel'
+
+#Overview
+alias overview-fix='systemctl --user restart quickshell-overview.service && qs ipc -c overview call overview toggle'
 
 #Weylus
 alias virtual-monitor-on='hyprctl output create headless WINSCREEN; hyprctl keyword monitor "WINSCREEN,1920x1080@60,3520x0,1.25"; hyprctl dispatch moveworkspacetomonitor 11 WINSCREEN'
@@ -94,4 +100,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
 # pnpm end
+export PKG_CONFIG_PATH="$HOME/.local/share/pkgconfig:$PKG_CONFIG_PATH"
