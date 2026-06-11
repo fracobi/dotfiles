@@ -55,7 +55,7 @@
         "frameThickness": 8,
         "hideOnOverview": false,
         "marginHorizontal": 3,
-        "marginVertical": 1,
+        "marginVertical": 0,
         "middleClickAction": "settings",
         "middleClickCommand": "",
         "middleClickFollowMouse": true,
@@ -111,7 +111,7 @@
                     "unfocusedIconsOpacity": 1
                 },
                 {
-                    "compactMode": false,
+                    "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "primary",
                     "id": "SystemMonitor",
@@ -146,6 +146,15 @@
                 },
                 {
                     "defaultSettings": {
+                        "compactMode": false,
+                        "defaultDuration": 0,
+                        "iconColor": "none",
+                        "textColor": "none"
+                    },
+                    "id": "plugin:timer"
+                },
+                {
+                    "defaultSettings": {
                         "autoStartBreaks": false,
                         "autoStartWork": false,
                         "longBreakDuration": 15,
@@ -154,15 +163,6 @@
                         "workDuration": 25
                     },
                     "id": "plugin:pomodoro"
-                },
-                {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultDuration": 0,
-                        "iconColor": "none",
-                        "textColor": "none"
-                    },
-                    "id": "plugin:timer"
                 },
                 {
                     "defaultSettings": {
@@ -175,7 +175,7 @@
                     "colorName": "primary",
                     "hideWhenIdle": true,
                     "id": "AudioVisualizer",
-                    "width": 200
+                    "width": 180
                 }
             ],
             "right": [

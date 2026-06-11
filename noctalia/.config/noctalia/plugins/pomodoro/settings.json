@@ -3,8 +3,8 @@
   "shortBreakDuration": 5,
   "longBreakDuration": 15,
   "sessionsBeforeLongBreak": 4,
-  "autoStartBreaks": false,
+  "autoStartBreaks": true,
   "autoStartWork": false,
-  "compactMode": false,
-  "playSound": true,
+  "compactMode": true,
+  "playSound": true
 }
