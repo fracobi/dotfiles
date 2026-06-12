@@ -2,11 +2,11 @@
 
 if hl.plugin and hl.plugin.scrolloverview then
     hl.plugin.scrolloverview.configure({
-        gesture_distance = 300, -- how far is the "max" for the gesture
-        scale = 0.8, -- preferred overview scale
+        gesture_distance = 300,
+        scale = 0.8,
         workspace_gap = 0,
-        wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
-        blur = false, -- blur only the main overview wallpaper
+        wallpaper = 0,
+        blur = false,
 
         shadow = {
             enabled = false,
@@ -16,7 +16,6 @@ if hl.plugin and hl.plugin.scrolloverview then
         },
     })
 end
-
 
 -- Vecchia configurazione plugin hyprexpo, per ora lasciata disattivata.
 
