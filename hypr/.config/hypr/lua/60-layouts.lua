@@ -14,13 +14,14 @@ hl.config({
         fullscreen_on_one_column = true,
         focus_fit_method = 1,
         follow_focus = true,
-        follow_min_visible = 0.4,
+        follow_min_visible = 0.1,
         direction = "right",
-	wrap_focus = true,
-	explicit_column_widths = "0.333, 0.5, 0.6, 0.667, 1.0",
+	wrap_focus = false,
+	explicit_column_widths = "0.333, 0.5, 0.666, 0.84, 1.0",
     },
 
     master = {
         new_status = "master",
     },
 })
+
