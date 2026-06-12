@@ -17,7 +17,7 @@ hl.config({
         follow_min_visible = 0.1,
         direction = "right",
 	wrap_focus = false,
-	explicit_column_widths = "0.333, 0.5, 0.666, 0.84, 1.0",
+	explicit_column_widths = "0.333, 0.5, 0.666, 0.85, 1.0",
     },
 
     master = {

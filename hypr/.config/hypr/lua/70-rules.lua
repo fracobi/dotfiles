@@ -1,14 +1,14 @@
 
 -- btop dentro kitty: floating, dimensione fissa, centrato
-hl.window_rule({
-  match = {
-    class = "^(kitty)$",
-    title = "^(btop)$",
-  },
-  float = true,
-  size = { 900, 600 },
-  center = true,
-})
+--hl.window_rule({
+--  match = {
+--    class = "^(kitty)$",
+--    title = "^(btop)$",
+--  },
+-- float = true,
+--  size = { 900, 600 },
+--  center = true,
+--})
 
 -- Popup nmtui-go
 hl.window_rule({
