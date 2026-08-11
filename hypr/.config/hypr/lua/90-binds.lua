@@ -5,8 +5,7 @@ local terminal = vars.terminal or "kitty"
 local fileManager = vars.fileManager or "thunar"
 local browser = vars.browser or "brave-browser"
 
--- Deve rispecchiare il layout iniziale impostato in 60-layouts.lua
-local currentLayout = "scrolling"
+local currentLayout = vars.defaultLayout or "scrolling"
 
 -- ============================================================
 -- Helpers
@@ -217,7 +216,7 @@ bind(mainMod .. " + TAB", exec("qs ipc -c overview call overview toggle"))
 -- ScrollOverview plugin
 bind(mainMod .. " + Q", function()
   if hl.plugin and hl.plugin.scrolloverview then
-    hl.plugin.scrolloverview.overview("toggle")
+    hl.plugin.scrolloverview.overview("toggle all")
   end
 end)
 
@@ -243,6 +242,7 @@ bind(
 bind(mainMod .. " + N", exec("qs -c noctalia-shell ipc call controlCenter toggle"))
 bind(mainMod .. " + SHIFT + N", exec("qs -c noctalia-shell ipc call settings toggle"))
 bind(mainMod .. " + I", exec("qs -c noctalia-shell ipc call wallpaper toggle"))
+bind(mainMod .. " + CTRL + C", exec("qs -c noctalia-shell ipc call plugin openPanel noctalia-calculator"))
 
 -- ============================================================
 -- Groups
