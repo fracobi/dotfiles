@@ -21,7 +21,7 @@ BROWSER_ADDR="$(
             select(
                 .workspace.id == $ws and
                 (
-                    (.class | test("^(brave-browser|google-chrome|chromium|chromium|firefox|Firefox)$"; "i"))
+                    (.class | test("^(brave-browser|google-chrome|chromium|firefox)$"; "i"))
                 )
             )
         )

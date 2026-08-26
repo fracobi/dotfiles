@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-dir="$1"
+set -u
+
+dir="${1:-}"
 
 case "$dir" in
   l|left)
@@ -18,7 +20,9 @@ esac
 
 before="$(hyprctl activewindow -j | jq -r '.address // empty')"
 
-hyprctl eval 'hl.dispatch(hl.dsp.layout("focus '"$layout_dir"'"))' >/dev/null 2>&1
+if ! hyprctl eval 'hl.dispatch(hl.dsp.layout("focus '"$layout_dir"'"))' >/dev/null 2>&1; then
+  exit 1
+fi
 
 after="$(hyprctl activewindow -j | jq -r '.address // empty')"
 
