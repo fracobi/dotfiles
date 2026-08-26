@@ -54,10 +54,35 @@ alias mime-app='qs -c noctalia-shell ipc call plugin:mimeapp-gui openPanel'
 #Overview
 alias overview-fix='systemctl --user restart quickshell-overview.service && qs ipc -c overview call overview toggle'
 
-#Weylus
-alias virtual-monitor-on='hyprctl output create headless WINSCREEN; hyprctl keyword monitor "WINSCREEN,1920x1080@60,3520x0,1.25"; hyprctl dispatch moveworkspacetomonitor 11 WINSCREEN'
-alias virtual-monitor-off='hyprctl output remove WINSCREEN'
-alias virtual-monitor-fix='systemctl --user restart pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland'
+unalias virtual-monitor-fix 2>/dev/null
+
+# virtual monitor / WINSCREEN
+_virtual_monitor_on() {
+  hyprctl output create headless WINSCREEN 2>/dev/null || true
+  sleep 0.3
+
+  hyprctl eval 'hl.monitor({ output = "WINSCREEN", mode = "1920x1080@60", position = "3520x0", scale = 1 })'
+  hyprctl dispatch 'hl.dsp.workspace.move({ workspace = "11", monitor = "WINSCREEN" })'
+}
+
+_virtual_monitor_off() {
+  hyprctl output remove WINSCREEN
+}
+
+alias virtual-monitor-on='_virtual_monitor_on'
+alias virtual-monitor-off='_virtual_monitor_off'
+
+virtual-monitor-fix() {
+  systemctl --user reset-failed
+
+  systemctl --user restart pipewire.service wireplumber.service
+  sleep 1
+
+  systemctl --user restart xdg-desktop-portal-hyprland.service
+  sleep 1
+
+  systemctl --user status xdg-desktop-portal-hyprland.service --no-pager
+}
 
 # Local/private aliases and machine-specific settings
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
