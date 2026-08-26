@@ -1,0 +1,3 @@
+[submodule "noctalia/.config/noctalia/plugins/androidconnect"]
+	path = noctalia/.config/noctalia/plugins/androidconnect
+	url = https://github.com/demencia89/noctalia-shell-androidconnect-plugin

@@ -38,8 +38,12 @@ The goal of this repository is to provide a reproducible and easy-to-bootstrap A
 sudo pacman -S --needed git
 git clone https://github.com/fracobi/dotfiles.git ~/dotfiles
 cd ~/dotfiles
+git submodule update --init --recursive
 ./bootstrap-arch.sh
 ```
+
+The submodule command initializes bundled components such as the AndroidConnect
+plugin at the exact revision recorded by this repository.
 
 After installation:
 
