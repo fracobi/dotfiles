@@ -3,15 +3,20 @@
 if hl.plugin and hl.plugin.scrolloverview then
     hl.plugin.scrolloverview.configure({
         gesture_distance = 300,
-        scale = 0.8,
+        scale = 0.4,
         workspace_gap = 0,
         wallpaper = 0,
         blur = false,
 
+        input = {
+	    touchpad_scroll_factor = 6,
+	    scroll_event_delay = 350,
+        },
+
         shadow = {
             enabled = false,
-            range = 50,
-            render_power = 3,
+            range = 10,
+            render_power = 1,
             color = 0xee1a1a1a,
         },
     })
