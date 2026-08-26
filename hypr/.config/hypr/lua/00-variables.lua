@@ -1,6 +1,8 @@
 _G.HYPR_VARS = {
   mainMod = "SUPER",
 
+  defaultLayout = "scrolling",
+
   terminal = "kitty",
   fileManager = "thunar",
   browser = "brave-browser",

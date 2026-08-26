@@ -6,7 +6,7 @@
 
 hl.config({
     general = {
-        layout = "scrolling",
+        layout = (_G.HYPR_VARS or {}).defaultLayout or "scrolling",
     },
 
     scrolling = {
@@ -24,4 +24,3 @@ hl.config({
         new_status = "master",
     },
 })
-
