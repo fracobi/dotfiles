@@ -2,10 +2,11 @@ local home = os.getenv("HOME")
 
 hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
 hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
+hl.exec_cmd("systemctl --user start graphical-session.target")
 
 hl.on("hyprland.start", function()
 
-  hl.exec_cmd("systemctl --user restart quickshell-overview.service")
+  hl.exec_cmd("systemctl --user start quickshell-overview.service")
   hl.exec_cmd("sh -c 'sleep 5; hyprpm reload -n'")
 
   hl.exec_cmd(home .. "/Scripts/notification-sound.sh")
