@@ -220,10 +220,6 @@ bind(mainMod .. " + Q", function()
   end
 end)
 
--- Dashboard EWW
-bind(mainMod .. " + D", exec("~/.config/eww/toggle-dashboard.sh"))
-bind(mainMod .. " + escape", exec("~/.config/eww/close-dashboard.sh"))
-
 -- Noctalia
 bind(mainMod .. " + SPACE", exec("qs -c noctalia-shell ipc call launcher toggle"))
 
