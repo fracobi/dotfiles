@@ -420,7 +420,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/cobi/Immagini/Foto_profilo.jpg",
+        "avatarImage": "/home/cobi/Pictures/Foto_profilo.jpg",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
@@ -706,7 +706,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/cobi/Documenti/Immagini/Sfondi/",
+        "directory": "/home/cobi/Pictures/Sfondi/",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

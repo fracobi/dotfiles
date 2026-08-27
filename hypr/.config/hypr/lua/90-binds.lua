@@ -392,6 +392,6 @@ bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
 -- ============================================================
 
 bind(mainMod .. " + S", exec("/home/cobi/.local/bin/hyprshot -m region --clipboard-only"))
-bind(mainMod .. " + SHIFT + S", exec("/home/cobi/.local/bin/hyprshot -m region -o /home/cobi/Immagini/Schermate"))
+bind(mainMod .. " + SHIFT + S", exec("/home/cobi/.local/bin/hyprshot -m region -o /home/cobi/Pictures/Screenshots"))
 bind(mainMod .. " + SHIFT + W", exec("/home/cobi/.local/bin/hyprshot -m window"))
-bind("Print", exec("/home/cobi/.local/bin/hyprshot -m output -o /home/cobi/Immagini/Schermate"))
+bind("Print", exec("/home/cobi/.local/bin/hyprshot -m output -o /home/cobi/Pictures/Screenshots"))
