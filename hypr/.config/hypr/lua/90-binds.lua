@@ -59,14 +59,26 @@ local function smart_horizontal_focus(direction)
   end
 end
 
+local function smart_horizontal_focus_local(direction)
+  if currentLayout == "scrolling" then
+    if direction == "r" then
+      hl.dispatch(exec("hyprctl eval 'hl.dispatch(hl.dsp.layout(\"focus r\"))'"))
+    else
+      hl.dispatch(exec("hyprctl eval 'hl.dispatch(hl.dsp.layout(\"focus l\"))'"))
+    end
+  else
+    hl.dispatch(hl.dsp.focus({ direction = direction }))
+  end
+end
+
 -- In scrolling layout UP/DOWN diventano cambio workspace.
 -- In master/dwindle restano focus verticale tra finestre.
 local function smart_vertical_focus(direction)
   if currentLayout == "scrolling" then
     if direction == "u" then
-      hl.dispatch(focus_workspace("e-1"))
+      hl.dispatch(exec("~/.config/hypr/scripts/workspace-monitor-step.sh prev"))
     else
-      hl.dispatch(focus_workspace("e+1"))
+      hl.dispatch(exec("~/.config/hypr/scripts/workspace-monitor-step.sh next"))
     end
   else
     hl.dispatch(hl.dsp.focus({ direction = direction }))
@@ -152,12 +164,18 @@ bind(mainMod .. " + down", function()
 end, { repeating = true })
 
 -- Cambio workspace esplicito, sempre disponibile
-bind(mainMod .. " + CTRL + up", focus_workspace("e-1"))
-bind(mainMod .. " + CTRL + down", focus_workspace("e+1"))
+bind(mainMod .. " + CTRL + up", exec("~/.config/hypr/scripts/workspace-monitor-step.sh prev"))
+bind(mainMod .. " + CTRL + down", exec("~/.config/hypr/scripts/workspace-monitor-step.sh next"))
 
 -- Mouse wheel workspace navigation
-bind(mainMod .. " + mouse_up", focus_workspace("e+1"))
-bind(mainMod .. " + mouse_down", focus_workspace("e-1"))
+bind(mainMod .. " + mouse_up", exec("~/.config/hypr/scripts/workspace-monitor-step.sh prev"))
+bind(mainMod .. " + mouse_down", exec("~/.config/hypr/scripts/workspace-monitor-step.sh next"))
+bind(mainMod .. " + ALT + mouse_up", function()
+  smart_horizontal_focus_local("r")
+end)
+bind(mainMod .. " + ALT + mouse_down", function()
+  smart_horizontal_focus_local("l")
+end)
 
 -- ============================================================
 -- Layout switching
@@ -393,5 +411,6 @@ bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
 
 bind(mainMod .. " + S", exec("/home/cobi/.local/bin/hyprshot -m region --clipboard-only"))
 bind(mainMod .. " + SHIFT + S", exec("/home/cobi/.local/bin/hyprshot -m region -o /home/cobi/Pictures/Screenshots"))
-bind(mainMod .. " + SHIFT + W", exec("/home/cobi/.local/bin/hyprshot -m window"))
+bind(mainMod .. " + SHIFT + W", exec("/home/cobi/.config/hypr/scripts/screenshot-active-window.sh"))
+bind("CTRL + SHIFT + W", exec("/home/cobi/.local/bin/hyprshot -m window"))
 bind("Print", exec("/home/cobi/.local/bin/hyprshot -m output -o /home/cobi/Pictures/Screenshots"))
