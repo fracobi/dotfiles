@@ -6,3 +6,15 @@ quickshell/.config/quickshell/**/.github/
 
 # GTK local bookmarks
 theming/.config/gtk-3.0/bookmarks
+
+# Local backups
+**/*.bak
+**/*.bak-*
+**/*.old
+**/*.orig
+**/*~
+
+# Runtime/cache artifacts
+__pycache__/
+*.py[cod]
+*.log
