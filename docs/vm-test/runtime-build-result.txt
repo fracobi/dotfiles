@@ -1,0 +1,8 @@
+[887/888] Building CXX object src/bluetooth/CMakeFiles/quickshell-bluetoothplugin_init.dir/quickshell_bluetoothplugin_init.cpp.o
+[888/888] Linking CXX executable src/quickshell
+-- Install configuration: "Release"
+-- Installing: /usr/local/bin/quickshell
+-- Set non-toolchain portion of runtime path of "/usr/local/bin/quickshell" to "$ORIGIN:$ORIGIN/../lib64"
+-- Installing: /usr/local/share/applications/dev.noctalia.noctalia-qs.desktop
+-- Installing: /usr/local/share/icons/hicolor/scalable/apps/dev.noctalia.noctalia-qs.svg
+noctalia-qs 0.0.12 (revision f308426239665e3bc3d624014e9295b2ae2f58ff, distributed by Unset)

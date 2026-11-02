@@ -1,0 +1,7 @@
+hyprland-0.57.0-3.fc44.x86_64
+qt6-qtbase-6.11.2-3.fc44.x86_64
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.2Gi       435Mi       4.4Mi       2.5Gi       2.6Gi
+Swap:          3.8Gi       292Ki       3.8Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        32G  2.2G   30G   7% /

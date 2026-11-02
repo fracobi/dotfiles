@@ -6,8 +6,9 @@ La repo originale non replicava il sistema completo. Installava solo Arch/CachyO
 `packages/fedora.txt` era incompleto e non usato. Il README dichiarava Fedora
 senza una procedura corrispondente. Ora Fedora 44 tradizionale, preferibilmente
 KDE come il PC di origine, è il riferimento. Atomic/Kinoite non è supportato.
-La procedura aggiornata resta un punto di partenza, NON un ripristino completo
-verificato: serve un collaudo in VM pulita prima di affidarle una migrazione.
+La procedura aggiornata resta un punto di partenza, NON un ripristino completo.
+È stato eseguito un [collaudo reale in VM](vm-test/README.md): desktop funzionante
+dopo la build aggiuntiva del runtime, con dipendenze ancora mancanti.
 
 ## Cosa è stato riallineato
 
@@ -30,8 +31,9 @@ Non abilita servizi automaticamente. I link Stow richiedono di conservare il clo
    `noctalia-qs 0.0.12`, revisione `f308426239665e3bc3d624014e9295b2ae2f58ff`;
    `/usr/local/bin/qs` punta a un binario compilato localmente, non gestito da RPM.
    Il bootstrap si ferma prima di applicare le configurazioni se manca questo
-   runtime. Recuperare URL sorgente, commit, flag CMake e dipendenze; aggiungere
-   una build ripetibile o un RPM proprio. Non assumere compatibilità del pacchetto
+   runtime. Ora `scripts/install-noctalia-qs-fedora.sh` compila dal repository
+   pubblico `noctalia-dev/noctalia-qs` il commit esatto: build riuscita nella VM
+   Fedora 44 con Qt 6.11.2. Rimane da mantenere la compatibilità negli aggiornamenti. Non assumere compatibilità del pacchetto
    `quickshell-git`: upstream documenta quel pacchetto per Fedora, ma non è
    necessariamente il fork attualmente usato.
    Fonte: https://quickshell.org/docs/v0.3.2/guide/install-setup/
@@ -89,7 +91,8 @@ Non abilita servizi automaticamente. I link Stow richiedono di conservare il clo
 4. Risolvere il blocco noctalia-qs e le dipendenze esterne sopra, quindi rieseguire.
 5. Eseguire `./scripts/check-setup.sh`, adattare percorsi e monitor, verificare
    con `./install.sh --dry-run`; per applicare usare `./install.sh`.
-6. Eseguire `systemctl --user daemon-reload`. Non abilitare overview/hypridle
+6. Eseguire `systemctl --user daemon-reload`. Al login preferire la sessione
+   **Hyprland (uwsm-managed)**: è quella verificata nel test, con portali attivi. Non abilitare overview/hypridle
    su default.target: vengono avviati prima della sessione grafica.
    Hyprland avvia già overview; per hypridle avviare il servizio dalla sessione
    dopo aver verificato l'ambiente, oppure abilitarne un avvio legato alla sessione.
@@ -101,6 +104,7 @@ Non abilita servizi automaticamente. I link Stow richiedono di conservare il clo
 
 Verifica sintassi Bash, simulazione e applicazione Stow in HOME temporanea,
 seconda applicazione per controllare idempotenza e backup di conflitti.
-Nessun pacchetto installato sul PC corrente, nessun servizio riavviato,
-nessuna migrazione o installazione Fedora pulita eseguita.
+Nessun pacchetto installato sul PC corrente e nessun suo servizio riavviato.
+Successivamente è stata creata una VM Fedora pulita: vedere il
+[rapporto del collaudo](vm-test/README.md) per metodo, schermate e limiti.
 Il remoto GitHub HEAD corrispondeva a `236042e3186849880eef4d4d05ecdfff501c808f`.

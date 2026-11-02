@@ -1,0 +1,26 @@
+BOOTSTRAP_UPDATED_EXIT=0
+Package "qt6ct-0.11-17.20250907git23a985f.fc44.x86_64" is already installed.
+Package "kvantum-1.1.6-1.fc44.x86_64" is already installed.
+Package "zsh-autosuggestions-0.7.1-4.fc44.noarch" is already installed.
+Package "zsh-syntax-highlighting-0.8.0-7.fc44.noarch" is already installed.
+Package "zoxide-0.9.8-2.fc44.x86_64" is already installed.
+Package "fzf-0.74.5-1.fc44.x86_64" is already installed.
+Package "eza-0.23.5-1.fc44.x86_64" is already installed.
+Package "bat-0.26.1-4.fc44.x86_64" is already installed.
+Package "jq-1.8.1-3.fc44.x86_64" is already installed.
+Package "grim-1.5.0-3.fc44.x86_64" is already installed.
+Package "slurp-1.5.0-6.fc44.x86_64" is already installed.
+Package "pavucontrol-6.2-1.fc44.x86_64" is already installed.
+Package "cava-0.10.2-7.fc44.x86_64" is already installed.
+Package "pipewire-utils-1.6.11-1.fc44.x86_64" is already installed.
+Package "wireplumber-0.5.19-1.fc44.x86_64" is already installed.
+Package "libnotify-0.8.9-1.fc44.x86_64" is already installed.
+Package "libcanberra-gtk3-0.30-39.fc44.x86_64" is already installed.
+Package "rofi-2.0.0-2.fc44.x86_64" is already installed.
+Package "python3-3.14.3-2.fc44.x86_64" is already installed.
+Package "dbus-tools-1:1.16.2-1.fc44.x86_64" is already installed.
+
+Nothing to do.
+Dotfiles installed. Services are not automatically enabled or started.
+Review docs/REPLICATION.md before selecting Hyprland at login.
+Default shell: chsh -s "$(command -v zsh)" (optional).

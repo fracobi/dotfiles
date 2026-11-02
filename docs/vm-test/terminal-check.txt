@@ -1,0 +1,25 @@
+ok
+/home/cobi/.zshrc:9: command not found: starship
+/home/cobi/.zshrc:12: command not found: atuin
+(eval):1: can't change option: zle
+(eval):1: can't change option: zle
+
+             .',;::::;,'.                  DISTRO 󰑃  Fedora Linux 44 (Cloud Edition) x86_64
+         .';:cccccccccccc:;,.             │ ├ 󰑃  Linux 6.19.10-300.fc44.x86_64
+      .;cccccccccccccccccccccc;.          │ ├󰏖 󰑃  1063 (rpm)
+    .:cccccccccccccccccccccccccc:.        │ ├ 󰑃  194 days
+  .;ccccccccccccc;.:dddl:.;ccccccc;.      │ └ 󰑃  zsh 5.9
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.     │ └ 󰑃  sshd 10.2p1
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.    󰌢 SYSTEM 󰑃  KVM/QEMU Standard PC (Q35 + ICH9, 2009) (pc-q35-10.2)
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,    │ ├󰻠 󰑃  11th Gen Intel(R) Core(TM) i7-1165G7 (4) @ 2.80 GHz
+:cccccccccccccc;MMM.;cccccccccccccccc:    │ ├󰻑 󰑃  Virtio 1.0 GPU
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:    │ ├󰍹 󰑃  1280x800 @ 75Hz
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;    │ ├󰾆 󰑃  1.54 GiB / 3.81 GiB (40%)
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'    │ ├󰓡 󰑃  296.00 KiB / 3.81 GiB (0%)
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;     │ ├󰅐 󰑃  9 mins
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;                                              
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.

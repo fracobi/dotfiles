@@ -28,3 +28,6 @@ __pycache__/
 **/.env.*
 **/local.lua
 .zshrc.local
+
+# Local VM test images and temporary keys
+.vm-test/

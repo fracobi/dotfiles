@@ -1,0 +1,106 @@
+== Compositor version ==
+Hyprland 0.57.0 built from branch v0.57.0 at commit 0aa6745f705f2c4b0a5004eb019ef76e5bbdb426 clean (VERSION: bump to 0.57.0).
+Date: Wed Oct 28 10:37:05 2026
+Tag: v0.57.0, commits: 7978
+
+Libraries:
+Hyprgraphics: built against 0.6.0, system has unknown
+Hyprutils: built against 0.14.3, system has unknown
+Hyprcursor: built against 0.1.13, system has unknown
+Hyprlang: built against 0.6.8, system has unknown
+Aquamarine: built against 0.16.0, system has unknown
+
+Version ABI string: 0aa6745f705f2c4b0a5004eb019ef76e5bbdb426_aq_0.16_hu_0.14_hg_0.6_hc_0.1_hlg_0.6
+no flags were set
+
+== Configuration errors ==
+
+
+== Monitors ==
+[{
+    "id": 0,
+    "name": "Virtual-1",
+    "description": "Red Hat Inc. QEMU Monitor",
+    "make": "Red Hat, Inc.",
+    "model": "QEMU Monitor",
+    "serial": "",
+    "width": 1280,
+    "height": 800,
+    "physicalWidth": 320,
+    "physicalHeight": 200,
+    "refreshRate": 74.99400,
+    "x": 0,
+    "y": 0,
+    "activeWorkspace": {
+        "address": "1",
+        "id": 1,
+        "type": "normal",
+        "name": "1"
+    },
+    "specialWorkspace": {
+        "address": "",
+        "type": "",
+        "name": ""
+    },
+    "reserved": [0, 0, 0, 0],
+    "scale": 1,
+    "transform": 0,
+    "focused": true,
+    "dpmsStatus": true,
+    "vrr": false,
+    "solitary": "0",
+    "solitaryBlockedBy": ["NOTIFICATION","WINDOWED","CANDIDATE"],
+    "activelyTearing": false,
+    "tearingBlockedBy": ["NOT_TORN","USER","CANDIDATE"],
+    "directScanoutTo": "0",
+    "directScanoutBlockedBy": ["USER","SW","CANDIDATE"],
+    "disabled": false,
+    "currentFormat": "XRGB8888",
+    "mirrorOf": "none",
+    "availableModes": ["1280x800@74.99Hz","5120x2160@50.00Hz","4096x2160@50.00Hz","3840x2160@60.00Hz","3840x2160@59.94Hz","3840x2160@50.00Hz","1920x1440@60.00Hz","2560x1080@50.00Hz","1856x1392@59.99Hz","1792x1344@60.00Hz","2048x1152@60.00Hz","1920x1200@59.88Hz","1920x1080@60.00Hz","1920x1080@50.00Hz","1600x1200@60.00Hz","1680x1050@59.95Hz","1400x1050@59.98Hz","1280x1024@60.02Hz","1440x900@59.89Hz","1280x960@60.00Hz","1360x768@60.02Hz","1280x768@59.87Hz","1024x768@60.00Hz","800x600@60.32Hz","640x480@60.00Hz","640x480@59.94Hz"],
+    "colorManagementPreset": "srgb",
+    "sdrBrightness": 1,
+    "sdrSaturation": 1,
+    "sdrMinLuminance": 0.2,
+    "sdrMaxLuminance": 80,
+    "hardwareCursorsInUse": true,
+    "hardwareDetails": {
+        "backend": "drm",
+        "hdr": false,
+        "chroma": true,
+        "bt2020": false,
+        "vrrCapable": false
+    }
+}]
+== Clients ==
+[]
+== Desktop processes ==
+12229 /usr/bin/start-hyprland
+12284 Hyprland --watchdog-fd 4
+12525 /usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WAYLANDCLIENT_LIB -DQT_WAYLANDGLOBAL_LIB -D_REENTRANT -I/home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/quickshell-wayland-buffer_autogen/include -I/home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/wl-proto/linux-dmabuf-v1 -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtOpenGL -isystem /usr/include/qt6/QtQuick/6.11.2 -isystem /usr/include/qt6/QtQuick/6.11.2/QtQuick -isystem /usr/include/qt6/QtCore/6.11.2 -isystem /usr/include/qt6/QtCore/6.11.2/QtCore -isystem /usr/include/qt6/QtGui/6.11.2 -isystem /usr/include/qt6/QtGui/6.11.2/QtGui -isystem /usr/include/qt6/QtQmlModels/6.11.2 -isystem /usr/include/qt6/QtQmlModels/6.11.2/QtQmlModels -isystem /usr/include/qt6/QtQml/6.11.2 -isystem /usr/include/qt6/QtQml/6.11.2/QtQml -isystem /usr/include/qt6/QtQmlModels -isystem /usr/include/qt6/QtQmlMeta/6.11.2 -isystem /usr/include/qt6/QtQmlMeta/6.11.2/QtQmlMeta -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2 -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlMeta -isystem /usr/include/qt6/QtWaylandClient -isystem /usr/include/qt6/QtWaylandClient/6.11.2 -isystem /usr/include/qt6/QtWaylandClient/6.11.2/QtWaylandClient -isystem /usr/include/qt6/QtWaylandGlobal -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2 -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2/QtWaylandGlobal -isystem /usr/include/libdrm -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -fno-strict-overflow -Winvalid-pch -include /home/cobi/.local/src/noctalia-qs/build/CMakeFiles/qs-pchset-large.dir/cmake_pch.hxx -MD -MT src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.o -MF src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.o.d -o src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.o -c /home/cobi/.local/src/noctalia-qs/src/wayland/buffer/manager.cpp
+12526 /usr/libexec/gcc/x86_64-redhat-linux/16/cc1plus -quiet -I /home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/quickshell-wayland-buffer_autogen/include -I /home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/wl-proto/linux-dmabuf-v1 -MD src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.d -MF src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.o.d -MT src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/manager.cpp.o -D_GNU_SOURCE -D QT_CORE_LIB -D QT_GUI_LIB -D QT_NETWORK_LIB -D QT_NO_DEBUG -D QT_OPENGL_LIB -D QT_QMLINTEGRATION_LIB -D QT_QMLMETA_LIB -D QT_QMLMODELS_LIB -D QT_QMLWORKERSCRIPT_LIB -D QT_QML_LIB -D QT_QUICK_LIB -D QT_WAYLANDCLIENT_LIB -D QT_WAYLANDGLOBAL_LIB -D _REENTRANT -D NDEBUG -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtOpenGL -isystem /usr/include/qt6/QtQuick/6.11.2 -isystem /usr/include/qt6/QtQuick/6.11.2/QtQuick -isystem /usr/include/qt6/QtCore/6.11.2 -isystem /usr/include/qt6/QtCore/6.11.2/QtCore -isystem /usr/include/qt6/QtGui/6.11.2 -isystem /usr/include/qt6/QtGui/6.11.2/QtGui -isystem /usr/include/qt6/QtQmlModels/6.11.2 -isystem /usr/include/qt6/QtQmlModels/6.11.2/QtQmlModels -isystem /usr/include/qt6/QtQml/6.11.2 -isystem /usr/include/qt6/QtQml/6.11.2/QtQml -isystem /usr/include/qt6/QtQmlModels -isystem /usr/include/qt6/QtQmlMeta/6.11.2 -isystem /usr/include/qt6/QtQmlMeta/6.11.2/QtQmlMeta -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2 -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlMeta -isystem /usr/include/qt6/QtWaylandClient -isystem /usr/include/qt6/QtWaylandClient/6.11.2 -isystem /usr/include/qt6/QtWaylandClient/6.11.2/QtWaylandClient -isystem /usr/include/qt6/QtWaylandGlobal -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2 -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2/QtWaylandGlobal -isystem /usr/include/libdrm -include /home/cobi/.local/src/noctalia-qs/build/CMakeFiles/qs-pchset-large.dir/cmake_pch.hxx /home/cobi/.local/src/noctalia-qs/src/wayland/buffer/manager.cpp -quiet -dumpdir src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/ -dumpbase manager.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -mtls-dialect=gnu2 -O3 -Wall -Wextra -Winvalid-pch -std=gnu++20 -fno-strict-overflow -o /tmp/ccAQW4gR.s
+12528 /usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WAYLANDCLIENT_LIB -DQT_WAYLANDGLOBAL_LIB -D_REENTRANT -I/home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/quickshell-wayland-buffer_autogen/include -I/home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/wl-proto/linux-dmabuf-v1 -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtOpenGL -isystem /usr/include/qt6/QtQuick/6.11.2 -isystem /usr/include/qt6/QtQuick/6.11.2/QtQuick -isystem /usr/include/qt6/QtCore/6.11.2 -isystem /usr/include/qt6/QtCore/6.11.2/QtCore -isystem /usr/include/qt6/QtGui/6.11.2 -isystem /usr/include/qt6/QtGui/6.11.2/QtGui -isystem /usr/include/qt6/QtQmlModels/6.11.2 -isystem /usr/include/qt6/QtQmlModels/6.11.2/QtQmlModels -isystem /usr/include/qt6/QtQml/6.11.2 -isystem /usr/include/qt6/QtQml/6.11.2/QtQml -isystem /usr/include/qt6/QtQmlModels -isystem /usr/include/qt6/QtQmlMeta/6.11.2 -isystem /usr/include/qt6/QtQmlMeta/6.11.2/QtQmlMeta -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2 -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlMeta -isystem /usr/include/qt6/QtWaylandClient -isystem /usr/include/qt6/QtWaylandClient/6.11.2 -isystem /usr/include/qt6/QtWaylandClient/6.11.2/QtWaylandClient -isystem /usr/include/qt6/QtWaylandGlobal -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2 -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2/QtWaylandGlobal -isystem /usr/include/libdrm -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -fno-strict-overflow -Winvalid-pch -include /home/cobi/.local/src/noctalia-qs/build/CMakeFiles/qs-pchset-large.dir/cmake_pch.hxx -MD -MT src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.o -MF src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.o.d -o src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.o -c /home/cobi/.local/src/noctalia-qs/src/wayland/buffer/dmabuf.cpp
+12529 /usr/libexec/gcc/x86_64-redhat-linux/16/cc1plus -quiet -I /home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/quickshell-wayland-buffer_autogen/include -I /home/cobi/.local/src/noctalia-qs/build/src/wayland/buffer/wl-proto/linux-dmabuf-v1 -MD src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.d -MF src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.o.d -MT src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/dmabuf.cpp.o -D_GNU_SOURCE -D QT_CORE_LIB -D QT_GUI_LIB -D QT_NETWORK_LIB -D QT_NO_DEBUG -D QT_OPENGL_LIB -D QT_QMLINTEGRATION_LIB -D QT_QMLMETA_LIB -D QT_QMLMODELS_LIB -D QT_QMLWORKERSCRIPT_LIB -D QT_QML_LIB -D QT_QUICK_LIB -D QT_WAYLANDCLIENT_LIB -D QT_WAYLANDGLOBAL_LIB -D _REENTRANT -D NDEBUG -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtOpenGL -isystem /usr/include/qt6/QtQuick/6.11.2 -isystem /usr/include/qt6/QtQuick/6.11.2/QtQuick -isystem /usr/include/qt6/QtCore/6.11.2 -isystem /usr/include/qt6/QtCore/6.11.2/QtCore -isystem /usr/include/qt6/QtGui/6.11.2 -isystem /usr/include/qt6/QtGui/6.11.2/QtGui -isystem /usr/include/qt6/QtQmlModels/6.11.2 -isystem /usr/include/qt6/QtQmlModels/6.11.2/QtQmlModels -isystem /usr/include/qt6/QtQml/6.11.2 -isystem /usr/include/qt6/QtQml/6.11.2/QtQml -isystem /usr/include/qt6/QtQmlModels -isystem /usr/include/qt6/QtQmlMeta/6.11.2 -isystem /usr/include/qt6/QtQmlMeta/6.11.2/QtQmlMeta -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2 -isystem /usr/include/qt6/QtQmlWorkerScript/6.11.2/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlWorkerScript -isystem /usr/include/qt6/QtQmlMeta -isystem /usr/include/qt6/QtWaylandClient -isystem /usr/include/qt6/QtWaylandClient/6.11.2 -isystem /usr/include/qt6/QtWaylandClient/6.11.2/QtWaylandClient -isystem /usr/include/qt6/QtWaylandGlobal -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2 -isystem /usr/include/qt6/QtWaylandGlobal/6.11.2/QtWaylandGlobal -isystem /usr/include/libdrm -include /home/cobi/.local/src/noctalia-qs/build/CMakeFiles/qs-pchset-large.dir/cmake_pch.hxx /home/cobi/.local/src/noctalia-qs/src/wayland/buffer/dmabuf.cpp -quiet -dumpdir src/wayland/buffer/CMakeFiles/quickshell-wayland-buffer.dir/ -dumpbase dmabuf.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -mtls-dialect=gnu2 -O3 -Wall -Wextra -Winvalid-pch -std=gnu++20 -fno-strict-overflow -o /tmp/cco2sCWL.s
+== Desktop service ==
+● quickshell-overview.service - Quickshell Overview
+     Loaded: loaded (/home/cobi/.config/systemd/user/quickshell-overview.service; linked; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+     Active: activating (auto-restart) (Result: exit-code) since Mon 2026-11-02 15:20:13 UTC; 1s ago
+ Invocation: 1e3cf8611a2a4c648bbb42b74833d44c
+    Process: 12496 ExecStartPre=/usr/bin/sleep 2 (code=exited, status=0/SUCCESS)
+    Process: 12522 ExecStart=/usr/bin/env qs -c overview (code=exited, status=127)
+   Main PID: 12522 (code=exited, status=127)
+   Mem peak: 1.3M
+        CPU: 18ms
+== Missing dependencies ==
+MISSING command: qs
+MISSING command: starship
+MISSING command: atuin
+MISSING command: brave-browser
+MISSING command: matugen
+MISSING command: spf
+MISSING command: wvkbd-mobintl
+MISSING dictation dependency: /home/cobi/.local/share/whisper.cpp/build/bin/whisper-cli
+MISSING dictation dependency: /home/cobi/.config/waystt/.env
+Review monitor names, /home/cobi and /mnt/windows paths in docs/REPLICATION.md.

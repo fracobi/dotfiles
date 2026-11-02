@@ -1,0 +1,120 @@
+== Compositor version ==
+Hyprland 0.57.0 built from branch v0.57.0 at commit 0aa6745f705f2c4b0a5004eb019ef76e5bbdb426 clean (VERSION: bump to 0.57.0).
+Date: Wed Oct 28 10:37:05 2026
+Tag: v0.57.0, commits: 7978
+
+Libraries:
+Hyprgraphics: built against 0.6.0, system has unknown
+Hyprutils: built against 0.14.3, system has unknown
+Hyprcursor: built against 0.1.13, system has unknown
+Hyprlang: built against 0.6.8, system has unknown
+Aquamarine: built against 0.16.0, system has unknown
+
+Version ABI string: 0aa6745f705f2c4b0a5004eb019ef76e5bbdb426_aq_0.16_hu_0.14_hg_0.6_hc_0.1_hlg_0.6
+no flags were set
+
+== Configuration errors ==
+
+
+== Monitors ==
+[{
+    "id": 0,
+    "name": "Virtual-1",
+    "description": "Red Hat Inc. QEMU Monitor",
+    "make": "Red Hat, Inc.",
+    "model": "QEMU Monitor",
+    "serial": "",
+    "width": 778,
+    "height": 788,
+    "physicalWidth": 190,
+    "physicalHeight": 200,
+    "refreshRate": 74.99900,
+    "x": 0,
+    "y": 0,
+    "activeWorkspace": {
+        "address": "1",
+        "id": 1,
+        "type": "normal",
+        "name": "1"
+    },
+    "specialWorkspace": {
+        "address": "",
+        "type": "",
+        "name": ""
+    },
+    "reserved": [0, 36, 0, 0],
+    "scale": 1,
+    "transform": 0,
+    "focused": true,
+    "dpmsStatus": true,
+    "vrr": false,
+    "solitary": "0",
+    "solitaryBlockedBy": ["WINDOWED","CANDIDATE"],
+    "activelyTearing": false,
+    "tearingBlockedBy": ["NOT_TORN","USER","CANDIDATE"],
+    "directScanoutTo": "0",
+    "directScanoutBlockedBy": ["USER","SW","CANDIDATE"],
+    "disabled": false,
+    "currentFormat": "XRGB8888",
+    "mirrorOf": "none",
+    "availableModes": ["778x788@75.00Hz","5120x2160@50.00Hz","4096x2160@50.00Hz","3840x2160@60.00Hz","3840x2160@59.94Hz","3840x2160@50.00Hz","1920x1440@60.00Hz","2560x1080@50.00Hz","1856x1392@59.99Hz","1792x1344@60.00Hz","2048x1152@60.00Hz","1920x1200@59.88Hz","1920x1080@60.00Hz","1920x1080@50.00Hz","1600x1200@60.00Hz","1680x1050@59.95Hz","1400x1050@59.98Hz","1280x1024@60.02Hz","1440x900@59.89Hz","1280x960@60.00Hz","1360x768@60.02Hz","1280x768@59.87Hz","1024x768@60.00Hz","800x600@60.32Hz","640x480@60.00Hz","640x480@59.94Hz"],
+    "colorManagementPreset": "srgb",
+    "sdrBrightness": 1,
+    "sdrSaturation": 1,
+    "sdrMinLuminance": 0.2,
+    "sdrMaxLuminance": 80,
+    "hardwareCursorsInUse": true,
+    "hardwareDetails": {
+        "backend": "drm",
+        "hdr": false,
+        "chroma": true,
+        "bt2020": false,
+        "vrrCapable": false
+    }
+}]
+== Clients ==
+[
+  {
+    "class": "xwaylandvideobridge",
+    "title": "Wayland to X Recording bridge — Xwayland Video Bridge"
+  }
+]
+== Desktop processes ==
+1594 systemctl --user start --wait wayland-wm@hyprland.desktop.service
+1778 /usr/bin/start-hyprland
+1793 Hyprland --watchdog-fd 4
+1833 qs -c noctalia-shell
+2076 /usr/libexec/xdg-desktop-portal-hyprland
+== Desktop service ==
+● quickshell-overview.service - Quickshell Overview
+     Loaded: loaded (/home/cobi/.config/systemd/user/quickshell-overview.service; linked; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Mon 2026-11-02 15:42:28 UTC; 52s ago
+ Invocation: 5cf290887ccc470cb45c5e38ff0935ac
+    Process: 1866 ExecStartPre=/usr/bin/sleep 2 (code=exited, status=0/SUCCESS)
+   Main PID: 2574 (qs)
+      Tasks: 6 (limit: 4617)
+     Memory: 22.2M (peak: 25.8M)
+        CPU: 212ms
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/quickshell-overview.service
+             └─2574 qs -c overview
+
+Nov 02 15:42:26 dotfiles-fedora-test systemd[1566]: Starting quickshell-overview.service - Quickshell Overview...
+Nov 02 15:42:28 dotfiles-fedora-test systemd[1566]: Started quickshell-overview.service - Quickshell Overview.
+Nov 02 15:42:28 dotfiles-fedora-test env[2574]: No running instances for "/home/cobi/.config/quickshell/overview/shell.qml"
+Nov 02 15:42:28 dotfiles-fedora-test env[2574]:   INFO: Launching config: "/home/cobi/.config/quickshell/overview/shell.qml"
+Nov 02 15:42:28 dotfiles-fedora-test env[2574]:   INFO: Shell ID: "f4a1e2392e4a865e12e45dad06456fb4" Path ID "f4a1e2392e4a865e12e45dad06456fb4"
+Nov 02 15:42:28 dotfiles-fedora-test env[2574]:   INFO: Saving logs to "/run/user/1000/quickshell/by-id/iz1sysvnt/log.qslog"
+Nov 02 15:42:28 dotfiles-fedora-test env[2574]:   INFO: Configuration Loaded
+== Missing dependencies ==
+MISSING command: starship
+MISSING command: atuin
+MISSING command: brave-browser
+MISSING command: matugen
+MISSING command: spf
+MISSING command: wvkbd-mobintl
+MISSING dictation dependency: /home/cobi/.local/share/whisper.cpp/build/bin/whisper-cli
+MISSING dictation dependency: /home/cobi/.config/waystt/.env
+noctalia-qs 0.0.12 (revision f308426239665e3bc3d624014e9295b2ae2f58ff, distributed by Unset)
+Review monitor names, /home/cobi and /mnt/windows paths in docs/REPLICATION.md.

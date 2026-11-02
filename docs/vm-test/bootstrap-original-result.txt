@@ -1,0 +1,20 @@
+[455/465] Installing exfatprogs-0:1.4.3 100% |   5.3 MiB/s | 382.7 KiB |  00m00s
+[456/465] Installing dosfstools-0:4.2-1 100% |   3.4 MiB/s | 240.7 KiB |  00m00s
+[457/465] Installing dconf-0:0.49.0-5.f 100% |   6.5 MiB/s | 311.5 KiB |  00m00s
+[458/465] Installing ripgrep-0:15.2.0-1 100% |  54.3 MiB/s |   4.6 MiB |  00m00s
+[459/465] Installing qt6-qttranslations 100% |  28.3 MiB/s |  15.5 MiB |  00m01s
+[460/465] Installing mailcap-0:2.1.54-1 100% | 369.0 KiB/s |  87.1 KiB |  00m00s
+[461/465] Installing fzf-0:0.74.5-1.fc4 100% |  18.3 MiB/s |   5.2 MiB |  00m00s
+[462/465] Installing zoxide-0:0.9.8-2.f 100% |   4.5 MiB/s |   1.2 MiB |  00m00s
+[463/465] Installing brightnessctl-0:0. 100% | 104.9 KiB/s |  30.4 KiB |  00m00s
+[464/465] Removing gpgme-0:2.0.1-3.fc44 100% |  63.0   B/s |  20.0   B |  00m00s
+[465/465] Removing libstdc++-0:16.0.1-0 100% |   1.0   B/s |  31.0   B |  00m20s
+>>> Running %posttrans scriptlet: wireplumber-0:0.5.19-1.fc44.x86_64
+>>> Finished %posttrans scriptlet: wireplumber-0:0.5.19-1.fc44.x86_64
+>>> Scriptlet output:
+>>> Created symlink '/etc/systemd/user/pipewire-session-manager.service' → '/usr/lib/systemd/user/wireplumber.service'.
+>>> Created symlink '/etc/systemd/user/pipewire.service.wants/wireplumber.service' → '/usr/lib/systemd/user/wireplumber.service'.
+>>>
+Complete!
+BLOCKED: install the compatible noctalia-qs build first; see docs/REPLICATION.md.
+Dotfiles have not been applied.

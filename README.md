@@ -3,8 +3,10 @@
 Configurazione personale Fedora 44 KDE + Hyprland (Lua), Noctalia/Quickshell,
 Kitty, Zsh/Starship e GNU Stow.
 
-**Stato:** configurazioni aggiornate alla macchina attuale; replica completa
-ancora da collaudare. Leggere [audit, dipendenze mancanti e soluzioni](docs/REPLICATION.md)
+**Stato:** desktop verificato in VM dopo la build aggiuntiva del runtime;
+ripristino dell’intero sistema ancora da completare. Vedere il
+[test reale in VM e le schermate](docs/vm-test/README.md) e
+[l’audit con dipendenze mancanti e soluzioni](docs/REPLICATION.md)
 prima di installare. Non è un'immagine del disco né un backup dei dati.
 
 ```bash
@@ -17,7 +19,8 @@ cd ~/dotfiles
 Il bootstrap Fedora installa le dipendenze del manifest e configura i COPR
 `sdegler/hyprland` e `errornointernet/quickshell`. Richiede il runtime
 `noctalia-qs` compatibile prima di applicare le configurazioni: la build locale
-attuale non ha ancora una ricetta automatica. Vedere l'audit per gli altri blocchi.
+attuale si può compilare con `./scripts/install-noctalia-qs-fedora.sh`, quindi
+rieseguire il bootstrap. Vedere l'audit per gli altri blocchi.
 
 Per sole configurazioni, dopo aver installato le dipendenze:
 

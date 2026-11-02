@@ -1,0 +1,5 @@
+PASS clipboard round trip
+PASS full-monitor screenshot
+PASS Hyprland configuration parsed
+PASS Kitty window mapped
+Monitor: Virtual-1

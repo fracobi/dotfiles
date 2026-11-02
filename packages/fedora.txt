@@ -36,3 +36,4 @@ libnotify
 libcanberra-gtk3
 rofi
 python3
+dbus-tools

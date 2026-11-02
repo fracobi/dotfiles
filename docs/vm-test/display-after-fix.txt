@@ -1,0 +1,2 @@
+Guest / QEMU top-bar mean difference: 0.00 (limit 10)
+PASS: guest and viewer framebuffer agree

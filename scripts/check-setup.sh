@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -uo pipefail
 missing=0
-for cmd in hyprland hyprctl hyprpm qs kitty zsh starship atuin zoxide fzf eza bat jq grim slurp wl-copy cliphist brightnessctl playerctl wpctl hyprlock hypridle brave-browser matugen spf wvkbd-mobintl; do
+for cmd in hyprland hyprctl hyprpm qs kitty zsh starship atuin zoxide fzf eza bat jq grim slurp wl-copy dbus-monitor dbus-update-activation-environment cliphist brightnessctl playerctl wpctl hyprlock hypridle brave-browser matugen spf wvkbd-mobintl; do
   command -v "$cmd" >/dev/null || { echo "MISSING command: $cmd"; missing=1; }
 done
 [[ -x /usr/libexec/hyprpolkitagent ]] || command -v hyprpolkitagent >/dev/null || { echo 'MISSING polkit agent'; missing=1; }

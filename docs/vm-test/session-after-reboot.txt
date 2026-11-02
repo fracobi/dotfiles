@@ -1,0 +1,23 @@
+== Session and portals ==
+active
+active
+active
+active
+== Automatically started shell ==
+1833 qs -c noctalia-shell
+== Runtime ==
+noctalia-qs 0.0.12 (revision f308426239665e3bc3d624014e9295b2ae2f58ff, distributed by Unset)
+== Fedora baseline ==
+Fedora release 44 (Forty Four)
+plasma-workspace-6.8.2-1.fc44.x86_64
+hyprland-0.57.0-3.fc44.x86_64
+qt6-qtbase-6.11.2-3.fc44.x86_64
+== Telemetry ==
+False
+== Failed user units ==
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+== VM disk ==
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        32G  6.7G   25G  22% /

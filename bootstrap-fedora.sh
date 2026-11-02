@@ -14,7 +14,7 @@ sudo dnf install "${packages[@]}"
 git submodule update --init --recursive
 # Do not silently substitute stock Quickshell for the currently used Noctalia fork.
 if ! command -v qs >/dev/null || ! qs --version 2>&1 | grep -q 'noctalia-qs'; then
-  echo 'BLOCKED: install the compatible noctalia-qs build first; see docs/REPLICATION.md.' >&2
+  echo 'BLOCKED: build the compatible runtime with ./scripts/install-noctalia-qs-fedora.sh, then rerun this bootstrap.' >&2
   echo 'Dotfiles have not been applied.' >&2
   exit 1
 fi
