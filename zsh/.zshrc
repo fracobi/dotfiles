@@ -6,16 +6,16 @@ export PATH="$HOME/go/bin:$PATH"
 export NEWT_COLORS='window=white,black;border=cyan,black;textbox=white,black;button=black,cyan;actbutton=black,green'
 
 # ---------- STARSHIP (prompt) ----------
-eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # ---------- ATUIN ----------
-eval "$(atuin init zsh)"
+command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
 
 # ---------- ZOXIDE ----------
-eval "$(zoxide init zsh)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 
 # ---------- FZF ----------
-eval "$(fzf --zsh)"
+command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
 
 # ---------- THE FUCK ----------
 if command -v thefuck >/dev/null 2>&1; then
@@ -102,7 +102,7 @@ bindkey "^[[1;5D" backward-word
 bindkey '^H' backward-kill-word
 
 # atuin su ctrl+r
-bindkey '^R' atuin-search
+command -v atuin >/dev/null 2>&1 && bindkey '^R' atuin-search
 
 # Utilizzo tasto Canc
 bindkey "^[[3~" delete-char-or-list
@@ -114,7 +114,7 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 
 # ---------- FASTFETCH ----------
-fastfetch
+command -v fastfetch >/dev/null 2>&1 && fastfetch
 
 
 

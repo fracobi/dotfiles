@@ -92,8 +92,8 @@ end
 bind(mainMod .. " + RETURN", exec(terminal))
 bind(mainMod .. " + B", exec(browser))
 bind(mainMod .. " + E", exec(fileManager))
-bind(mainMod .. " + Y", exec("kitty --title spf -e spf"))
-bind(mainMod .. " + K", exec("/home/cobi/.local/bin/tastiera-virtuale"))
+bind(mainMod .. " + Y", exec("kitty --title spf -e ~/.local/bin/dotfiles-tool spf"))
+bind(mainMod .. " + K", exec("~/.local/bin/tastiera-virtuale"))
 
 bind(mainMod .. " + SHIFT + M", exec("hyprlock"))
 bind(mainMod .. " + Delete", exec("qs -c noctalia-shell ipc call sessionMenu toggle"))
@@ -123,7 +123,7 @@ bind(mainMod .. " + F", hl.dsp.window.fullscreen({
 -- Floating smart:
 -- se la finestra è unica nel workspace: float + resize + center
 -- se ci sono più finestre: solo toggle float
-bind(mainMod .. " + V", exec("/home/cobi/.config/hypr/scripts/toggle-float-smart.sh"))
+bind(mainMod .. " + V", exec("~/.config/hypr/scripts/toggle-float-smart.sh"))
 
 -- Swap finestre
 bind(mainMod .. " + SHIFT + left", hl.dsp.window.swap({ direction = "l" }))
@@ -423,14 +423,14 @@ bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
 -- Screenshots
 -- ============================================================
 
-bind(mainMod .. " + S", exec("/usr/bin/bash /home/cobi/.config/hypr/lua/screenshot-region.sh clipboard"))
-bind(mainMod .. " + SHIFT + S", exec("/usr/bin/bash /home/cobi/.config/hypr/lua/screenshot-region.sh save"))
-bind(mainMod .. " + SHIFT + W", exec("/home/cobi/.config/hypr/scripts/screenshot-active-window.sh"))
-bind("CTRL + SHIFT + W", exec("/home/cobi/.local/bin/hyprshot -m window"))
-bind("Print", exec("/home/cobi/.local/bin/hyprshot -m output -o /home/cobi/Pictures/Screenshots"))
+bind(mainMod .. " + S", exec("/usr/bin/bash ~/.config/hypr/lua/screenshot-region.sh clipboard"))
+bind(mainMod .. " + SHIFT + S", exec("/usr/bin/bash ~/.config/hypr/lua/screenshot-region.sh save"))
+bind(mainMod .. " + SHIFT + W", exec("~/.config/hypr/scripts/screenshot-active-window.sh"))
+bind("CTRL + SHIFT + W", exec("hyprshot -m window"))
+bind("Print", exec("hyprshot -m output -o ~/Pictures/Screenshots"))
 
 -- BEGIN dettatura locale (waystt)
 -- SUPER ALT D resta assegnato al layout dwindle.
-bind(mainMod .. " + D", exec("/home/cobi/.local/bin/dettatura toggle"))
-bind(mainMod .. " + Escape", exec("/home/cobi/.local/bin/dettatura cancel"))
+bind(mainMod .. " + D", exec("~/.local/bin/dettatura toggle"))
+bind(mainMod .. " + Escape", exec("~/.local/bin/dettatura cancel"))
 -- END dettatura locale (waystt)

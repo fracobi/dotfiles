@@ -1,6 +1,26 @@
 # Collaudo reale VM Fedora 44 — 2 novembre 2026
 
-## Risultato
+## Consolidamento successivo
+
+Il bootstrap ora installa Starship, Atuin, Matugen, hyprshot, ImageMagick e Brave,
+installa il font Nerd con checksum e avvia automaticamente la build Noctalia se
+manca il runtime. Nella VM aggiornata il controllo della base restituisce **zero
+problemi**; gli strumenti personali opzionali sono elencati separatamente.
+La build del runtime era già presente da questa prova: non è stata ripetuta una
+seconda compilazione pulita durante il consolidamento.
+
+Sono stati verificati anche Zsh con PTY, configurazione Lua senza errori,
+workspace su Virtual-1, fallback overview senza plugin e override XDG autostart:
+provando ad avviare il bridge KDE in Hyprland, il servizio viene saltato e non
+compare alcuna finestra nera. Il profilo monitor locale resta escluso da Stow.
+Una prova separata in una HOME nuova verifica percorsi personalizzati senza
+modificare i template e senza copiare backup o stato runtime.
+
+Esiti registrati in [consolidation-result.txt](consolidation-result.txt).
+Queste prove aggiornano i limiti del rapporto iniziale sotto. La procedura da
+seguire è ora [docs/MIGRATION.md](../MIGRATION.md).
+
+## Risultato iniziale
 
 Il desktop Hyprland + Noctalia si avvia nella VM, ma il commit iniziale
 `01d7069` **non installa da solo il setup completo**: il bootstrap termina con
@@ -131,6 +151,9 @@ Il confronto e il reload della configurazione sono riusciti dopo la correzione.
 
 L'account del test si chiama `cobi`, quindi non verifica la portabilità verso un
 nome utente diverso: i percorsi assoluti restano un problema noto.
+
+Al termine del consolidamento la VM è stata spenta ordinatamente. Porte SSH
+2227 e VNC 5907 chiuse, controllo QMP non più attivo; disco conservato.
 
 ## File locali della VM
 

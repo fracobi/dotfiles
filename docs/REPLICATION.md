@@ -1,5 +1,8 @@
 # Audit e ripristino — 2 novembre 2026
 
+> Audit storico delle prime prove. Il consolidamento successivo risolve diverse
+> voci qui elencate: usare [la checklist aggiornata](MIGRATION.md) per installare.
+
 ## Verdetto
 
 La repo originale non replicava il sistema completo. Installava solo Arch/CachyOS;

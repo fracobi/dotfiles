@@ -2,7 +2,7 @@ local home = os.getenv("HOME")
 
 hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
 hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
-hl.exec_cmd("systemctl --user start graphical-session.target")
+-- Session lifecycle and portals are managed by UWSM.
 
 local function sync_monitor_workspaces(delay)
   hl.exec_cmd("sh -c 'sleep " .. delay .. "; ~/.config/hypr/scripts/sync-monitor-workspaces.sh'")
@@ -11,7 +11,7 @@ end
 hl.on("hyprland.start", function()
 
   hl.exec_cmd("systemctl --user start quickshell-overview.service")
-  hl.exec_cmd("sh -c 'sleep 5; hyprpm reload -n'")
+  hl.exec_cmd("~/.config/hypr/scripts/reload-plugins.sh")
 
   hl.exec_cmd(home .. "/Scripts/notification-sound.sh")
 
@@ -28,7 +28,7 @@ hl.on("hyprland.start", function()
   sync_monitor_workspaces("1")
 
 -- WhatsApp Web PWA in background
-  hl.exec_cmd("sh -c 'sleep 10 && gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default'")
+  hl.exec_cmd("~/.config/hypr/scripts/start-personal-apps.sh")
 
   -- hl.exec_cmd("numlockx on")
 end)

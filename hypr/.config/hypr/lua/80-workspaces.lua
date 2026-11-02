@@ -1,3 +1,4 @@
+if DOTFILES_MONITOR_PROFILE == "current" then
 for i = 1, 5 do
   hl.workspace_rule({
     workspace = tostring(i),
@@ -10,6 +11,8 @@ for i = 6, 10 do
     workspace = tostring(i),
     monitor = "eDP-1",
   })
+end
+
 end
 
 for i = 11, 15 do

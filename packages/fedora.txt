@@ -37,3 +37,16 @@ libcanberra-gtk3
 rofi
 python3
 dbus-tools
+
+# Desktop dependencies verified in the Fedora test VM
+hyprland-uwsm
+starship
+atuin
+matugen
+hyprshot
+ImageMagick
+fontconfig
+curl
+tar
+xz
+xdg-user-dirs

@@ -2,5 +2,5 @@
 if pgrep -u "$(id -u)" -x wvkbd-mobintl >/dev/null; then
     pkill -RTMIN -u "$(id -u)" -x wvkbd-mobintl
 else
-    exec wvkbd-mobintl -H 280 -L 220
+    exec "$HOME/.local/bin/dotfiles-tool" wvkbd-mobintl -H 280 -L 220
 fi

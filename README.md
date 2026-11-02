@@ -1,13 +1,8 @@
 # fracobi/dotfiles
 
-Configurazione personale Fedora 44 KDE + Hyprland (Lua), Noctalia/Quickshell,
-Kitty, Zsh/Starship e GNU Stow.
-
-**Stato:** desktop verificato in VM dopo la build aggiuntiva del runtime;
-ripristino dell’intero sistema ancora da completare. Vedere il
-[test reale in VM e le schermate](docs/vm-test/README.md) e
-[l’audit con dipendenze mancanti e soluzioni](docs/REPLICATION.md)
-prima di installare. Non è un'immagine del disco né un backup dei dati.
+Setup personale Fedora 44 KDE + Hyprland Lua, Noctalia, Kitty e Zsh/Starship.
+Il flusso previsto è: installare Fedora, applicare la repo, completare dati,
+account e strumenti personali con la [checklist di migrazione](docs/MIGRATION.md).
 
 ```bash
 sudo dnf install git
@@ -16,28 +11,40 @@ cd ~/dotfiles
 ./bootstrap-fedora.sh
 ```
 
-Il bootstrap Fedora installa le dipendenze del manifest e configura i COPR
-`sdegler/hyprland` e `errornointernet/quickshell`. Richiede il runtime
-`noctalia-qs` compatibile prima di applicare le configurazioni: la build locale
-attuale si può compilare con `./scripts/install-noctalia-qs-fedora.sh`, quindi
-rieseguire il bootstrap. Vedere l'audit per gli altri blocchi.
+Il bootstrap installa le dipendenze desktop, Brave dal repository ufficiale,
+Starship dal COPR, Atuin, Matugen, screenshot e font Nerd con checksum fissato.
+Se necessario compila il runtime Noctalia al commit verificato nella VM.
+Al login selezionare **Hyprland (uwsm-managed)**.
 
-Per sole configurazioni, dopo aver installato le dipendenze:
+```bash
+./scripts/check-setup.sh          # base obbligatoria e promemoria opzionali
+./scripts/check-setup.sh --strict # richiede anche i componenti opzionali
+```
+
+Monitor automatici su una macchina nuova; personalizzazioni in
+`~/.config/hypr/local.lua`, escluso da Git e Stow. Il vecchio assetto monitor
+rimane selezionabile con il profilo `current`. I percorsi Noctalia vengono
+adattati al nuovo HOME durante l'installazione.
+
+Per applicare solo le configurazioni con GNU Stow:
 
 ```bash
 ./install.sh --dry-run
 ./install.sh
-./scripts/check-setup.sh
 ```
 
-Stow conserva i file nel clone e crea link in HOME. Non spostare/eliminare il clone.
-I conflitti sono salvati per file in `~/.local/state/dotfiles/backups/`.
-La simulazione segnala conflitti senza modificarli. Nessun servizio viene
-abilitato automaticamente. È possibile usare una HOME di prova:
-`./install.sh /percorso/home-di-prova`.
+Conservare il clone: i file sono collegati da quella cartella. I conflitti
+vengono salvati per file in `~/.local/state/dotfiles/backups/`. Su una HOME diversa
+i file che richiedono percorsi personali diventano copie locali. Nessun servizio
+personale di sincronizzazione viene abilitato automaticamente.
 
-`inventory/` fotografa pacchetti, versioni, Flatpak e repository della macchina
-sorgente; `packages/fedora.txt` è invece il manifest desktop da mantenere.
-Account, segreti, modelli AI, sfondi, dati e driver specifici richiedono procedure
-separate. Gli script Arch/CachyOS sono conservati come materiale storico e non
-sono il percorso supportato o verificato.
+- [Checklist operativa: cosa finire e come](docs/MIGRATION.md)
+- [Test reale in VM, schermate e limiti](docs/vm-test/README.md)
+- [Audit iniziale e problemi rilevati](docs/REPLICATION.md)
+- `inventory/`: fotografia del vecchio sistema, da consultare per scegliere le app;
+  non è una lista da reinstallare alla cieca.
+
+Supporto di riferimento: Fedora 44 tradizionale, KDE, x86_64. Atomic/Kinoite e altre
+release non sono verificate. Gli script Arch/CachyOS restano materiale storico.
+Driver, dati, modelli AI, account, PWA e credenziali richiedono completamento
+manuale. La repo non è un'immagine del disco né un backup dei dati personali.

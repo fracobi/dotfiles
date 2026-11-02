@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+command_name=${1:?Usage: dotfiles-tool command [args...]}
+shift
+if ! command -v "$command_name" >/dev/null 2>&1; then
+  message="Manca $command_name. Vedi docs/MIGRATION.md nella repo dotfiles."
+  printf '%s\n' "$message" >&2
+  if command -v notify-send >/dev/null; then notify-send 'Componente opzionale non installato' "$message" || true; fi
+  exit 127
+fi
+exec "$command_name" "$@"

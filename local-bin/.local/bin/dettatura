@@ -121,5 +121,17 @@ if __name__=='__main__':
  os.umask(0o077)
  command=sys.argv[1] if len(sys.argv)>1 else 'toggle'
  if command=='worker':worker()
- elif command in ('toggle','cancel'):client(command)
+ elif command in ('toggle','cancel'):
+  if command=='toggle':
+   try:
+    args=transcription_command(ROOT/'audio.wav')
+    ready=pathlib.Path(args[0]).is_file() and pathlib.Path(args[2]).is_file()
+   except (OSError,ValueError):ready=False
+   if not ready:
+    message='Dettatura non configurata: completa la sezione dettatura in docs/MIGRATION.md.'
+    notify(message)
+    import shutil
+    if shutil.which('notify-send'):subprocess.run(['notify-send','Dettatura',message],check=False)
+    sys.exit(1)
+  client(command)
  else:sys.exit('Uso: dettatura [toggle|cancel]')

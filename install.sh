@@ -9,9 +9,16 @@ TARGET_DIR="${1:-$HOME}"
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd -P)"
 command -v stow >/dev/null || { echo 'Install GNU Stow first.' >&2; exit 1; }
 PACKAGES=(hypr kitty starship zsh brave fastfetch noctalia quickshell theming desktop local-bin)
+# Stow reads .stow-local-ignore inside each package, not at repository root.
+# Apply the shared rules explicitly to every package.
+STOW_IGNORES=()
+while IFS= read -r pattern; do
+  [[ -z "$pattern" || "$pattern" == \#* ]] && continue
+  STOW_IGNORES+=("--ignore=$pattern")
+done < .stow-local-ignore
 # Back up individual conflicts only: never move all of ~/.config/systemd/user.
 if (( DRY_RUN )); then
-  stow --simulate --verbose --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
+  stow "${STOW_IGNORES[@]}" --simulate --verbose --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
   exit
 fi
 BACKUP="$TARGET_DIR/.local/state/dotfiles/backups/$(date +%Y%m%d-%H%M%S)-$$"
@@ -33,7 +40,8 @@ for package in "${PACKAGES[@]}"; do
       mv -- "$target" "$BACKUP/$relative"
       echo "Backup: $BACKUP/$relative"
     fi
-  done < <(find "$package" \( -name .git -o -name .github \) -prune -o \( -type f -o -type l \) ! -name '*.bak' ! -name '*.bak-*' ! -name '*.backup-*' ! -name '*.save' ! -name '*.save.*' -print0)
+  done < <(find "$package" \( -name .git -o -name .github -o -name hyprdrive \) -prune -o \( -type f -o -type l \) ! -name '*.bak' ! -name '*.bak-*' ! -name '*backup-*' ! -name '*.save' ! -name '*.save.*' ! -name 'local.lua' -print0)
 done
-stow --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
+stow "${STOW_IGNORES[@]}" --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
+python3 scripts/prepare-local-config.py "$TARGET_DIR"
 echo 'Dotfiles installed. Services are not automatically enabled or started.'

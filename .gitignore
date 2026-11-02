@@ -31,3 +31,6 @@ __pycache__/
 
 # Local VM test images and temporary keys
 .vm-test/
+
+# Generated workspace-layout state, not a portable profile
+hypr/.config/hypr/hyprdrive/

@@ -2,6 +2,8 @@
 -- Loads modular configuration from ~/.config/hypr/lua
 
 require("lua.00-variables")
+local local_config = loadfile(os.getenv("HOME") .. "/.config/hypr/local.lua")
+if local_config then local_config() end
 require("lua.10-monitors")
 require("lua.20-autostart")
 require("lua.30-env")

@@ -1,0 +1,27 @@
+Dotfiles installed. Services are not automatically enabled or started.
+noctalia-qs 0.0.12 (revision f308426239665e3bc3d624014e9295b2ae2f58ff, distributed by Unset)
+OPZIONALE: Superfile (Super+Y) — vedi docs/MIGRATION.md
+OPZIONALE: tastiera virtuale (Super+K) — vedi docs/MIGRATION.md
+OPZIONALE: assistente locale Kitty (Ctrl+Shift+E) — vedi docs/MIGRATION.md
+OPZIONALE: pannello rete personalizzato — vedi docs/MIGRATION.md
+OPZIONALE dettatura: manca /home/cobi/.local/share/whisper.cpp/build/bin/whisper-cli — vedi docs/MIGRATION.md
+OPZIONALE dettatura: manca /home/cobi/.config/waystt/.env — vedi docs/MIGRATION.md
+
+Base: 0 problemi. Componenti opzionali da completare: 6.
+Checklist dati, account, monitor e plugin: docs/MIGRATION.md
+BASE_CHECK_EXIT=0
+STRICT_CHECK_EXIT=1
+
+
+OVERVIEW_FALLBACK_EXIT=0
+OPTIONAL_TOOL_EXIT=127
+UNCONFIGURED_DICTATION_EXIT=1
+PASS_NO_RECORDING
+active
+active
+active
+
+Bridge autostart in Hyprland: inactive; mapped bridge windows: 0.
+Workspace fallback, no-plugin reload and absent PWA: exit 0.
+Zsh started with PTY: exit 0, no missing-command errors.
+New-HOME install: paths relocated; templates unchanged; local.lua, hyprdrive and backups excluded.
