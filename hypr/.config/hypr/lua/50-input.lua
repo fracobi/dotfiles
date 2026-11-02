@@ -26,23 +26,25 @@ hl.gesture({
   scale = 1.5,
 })
 
+-- Scorrimento continuo delle finestre: sensibilità doppia rispetto a 1.5.
+-- Il layout assegna il focus alla finestra di arrivo al rilascio del gesto.
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
     action = "scroll_move",
-    scale = 1.5,
+    scale = 3.0,
 })
 
-hl.gesture({
-    fingers = 4,
-    direction = "vertical",
-    action = function()
-        if hl.plugin and hl.plugin.scrolloverview then
-            hl.plugin.scrolloverview.overview("toggle")
-        end
-    end,
-    scale = 1.5,
-})
+-- Gesture nativa ScrollOverview: l'animazione segue il movimento delle dita.
+-- Alterna apertura/chiusura sul monitor attivo; corsa ridotta da scale e
+-- plugin.scrolloverview.gesture_distance (in 95-plugins.lua).
+if hl.plugin and hl.plugin.scrolloverview then
+    hl.plugin.scrolloverview.gesture({
+        fingers = 4,
+        direction = "vertical",
+        scale = 1.8,
+    })
+end
 
 hl.device({
   name = "epic-mouse-v1",

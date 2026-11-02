@@ -81,3 +81,19 @@ hl.window_rule({
   },
   workspace = "99 silent",
 })
+
+-- Chrome: mostra la finestra del profilo selezionato anche su altri workspace.
+hl.window_rule({
+  name = "chrome-profile-activation",
+  match = {
+    class = "^(google-chrome)$",
+  },
+  focus_on_activate = true,
+})
+
+-- Faster touchpad scrolling for PdfCraft only (global factor: 0.3).
+hl.window_rule({
+  name = "pdfcraft-touchpad-scroll",
+  match = { class = "^(ai\\.storyteller\\.pdfcraft)$" },
+  scroll_touchpad = 1.2,
+})

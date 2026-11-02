@@ -79,16 +79,53 @@
         "widgets": {
             "center": [
                 {
-                    "clockColor": "none",
-                    "customFont": "FiraCode Nerd Font SemBd",
-                    "formatHorizontal": "HH:mm:ss | dd/MM/yyyy",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": true
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "id": "ActiveWindow",
+                    "maxWidth": 250,
+                    "scrollingMode": "always",
+                    "showIcon": true,
+                    "showText": true,
+                    "textColor": "none",
+                    "useFixedWidth": false
                 }
             ],
             "left": [
+                {
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "",
+                    "hideMode": "alwaysExpanded",
+                    "icon": "grid-dots",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "hyprctl eval 'hl.dispatch(hl.plugin.scrolloverview.overview(\"toggle all\"))'",
+                    "leftClickUpdateText": true,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
+                    },
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": true,
+                    "showIcon": true,
+                    "showTextTooltip": true,
+                    "textCollapse": "",
+                    "textCommand": "",
+                    "textIntervalMs": 3000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
+                },
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
@@ -154,24 +191,6 @@
                     "id": "plugin:timer"
                 },
                 {
-                    "defaultSettings": {
-                        "autoStartBreaks": false,
-                        "autoStartWork": false,
-                        "longBreakDuration": 15,
-                        "sessionsBeforeLongBreak": 4,
-                        "shortBreakDuration": 5,
-                        "workDuration": 25
-                    },
-                    "id": "plugin:pomodoro"
-                },
-                {
-                    "defaultSettings": {
-                        "precision": 8,
-                        "showBarValue": true
-                    },
-                    "id": "plugin:noctalia-calculator"
-                },
-                {
                     "compactMode": false,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
@@ -186,36 +205,54 @@
                     "textColor": "none",
                     "useFixedWidth": false,
                     "visualizerType": "linear"
+                },
+                {
+                    "defaultSettings": {
+                        "autoStartBreaks": false,
+                        "autoStartWork": false,
+                        "longBreakDuration": 15,
+                        "sessionsBeforeLongBreak": 4,
+                        "shortBreakDuration": 5,
+                        "workDuration": 25
+                    },
+                    "id": "plugin:pomodoro"
                 }
             ],
             "right": [
                 {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 180,
-                    "scrollingMode": "always",
-                    "showIcon": true,
-                    "showText": true,
-                    "textColor": "none",
-                    "useFixedWidth": false
-                },
-                {
-                    "defaultSettings": {
-                        "embeddedMirrorAudioEnabled": false,
-                        "hideIfNoDeviceConnected": false,
-                        "iconColor": "none",
-                        "phoneSizePresetIndex": 0,
-                        "phoneSizePresetKey": "small",
-                        "phoneSizeStepDirection": 1,
-                        "wirelessAdbConnectHost": "",
-                        "wirelessAdbConnectPort": "",
-                        "wirelessAdbDevices": {
-                        },
-                        "wirelessAdbPairHost": "",
-                        "wirelessAdbPairPort": ""
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "",
+                    "hideMode": "expandWithOutput",
+                    "icon": "microphone",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "dettatura",
+                    "leftClickExec": "/home/cobi/.local/bin/dettatura toggle",
+                    "leftClickUpdateText": false,
+                    "maxTextLength": {
+                        "horizontal": 12,
+                        "vertical": 6
                     },
-                    "id": "plugin:androidconnect"
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": true,
+                    "rightClickExec": "/home/cobi/.local/bin/dettatura cancel",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": false,
+                    "showIcon": false,
+                    "showTextTooltip": true,
+                    "textCollapse": "",
+                    "textCommand": "/home/cobi/.local/bin/dettatura-indicatore",
+                    "textIntervalMs": 3000,
+                    "textStream": true,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 },
                 {
                     "hideWhenZero": false,
@@ -266,6 +303,15 @@
                     "id": "Battery",
                     "showNoctaliaPerformance": false,
                     "showPowerProfiles": false
+                },
+                {
+                    "clockColor": "none",
+                    "customFont": "FiraCode Nerd Font SemBd",
+                    "formatHorizontal": "HH:mm:ss | dd/MM/yyyy",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": true
                 },
                 {
                     "iconColor": "error",
@@ -522,7 +568,7 @@
         "weatherTaliaMascotAlways": false
     },
     "network": {
-        "bluetoothAutoConnect": false,
+        "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "list",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 60000,

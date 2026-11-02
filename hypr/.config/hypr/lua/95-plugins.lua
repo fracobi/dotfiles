@@ -2,7 +2,7 @@
 
 if hl.plugin and hl.plugin.scrolloverview then
     hl.plugin.scrolloverview.configure({
-        gesture_distance = 300,
+        gesture_distance = 180,
         scale = 0.4,
         workspace_gap = 0,
         wallpaper = 0,

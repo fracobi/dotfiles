@@ -1,0 +1,9 @@
+(^|/)\.git($|/)
+(^|/)\.github($|/)
+(^|/)AGENTS\.md$
+\.bak($|-)
+\.backup-
+\.save($|\.)
+~$
+__pycache__
+(^|/)\.env($|\.)

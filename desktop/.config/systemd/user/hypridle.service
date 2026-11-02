@@ -1,0 +1,14 @@
+[Unit]
+Description=Hypridle idle daemon
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hypridle
+Restart=always
+RestartSec=2
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

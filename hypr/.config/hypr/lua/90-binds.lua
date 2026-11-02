@@ -93,6 +93,7 @@ bind(mainMod .. " + RETURN", exec(terminal))
 bind(mainMod .. " + B", exec(browser))
 bind(mainMod .. " + E", exec(fileManager))
 bind(mainMod .. " + Y", exec("kitty --title spf -e spf"))
+bind(mainMod .. " + K", exec("/home/cobi/.local/bin/tastiera-virtuale"))
 
 bind(mainMod .. " + SHIFT + M", exec("hyprlock"))
 bind(mainMod .. " + Delete", exec("qs -c noctalia-shell ipc call sessionMenu toggle"))
@@ -163,9 +164,9 @@ bind(mainMod .. " + down", function()
   smart_vertical_focus("d")
 end, { repeating = true })
 
--- Cambio workspace esplicito, sempre disponibile
-bind(mainMod .. " + CTRL + up", exec("~/.config/hypr/scripts/workspace-monitor-step.sh prev"))
-bind(mainMod .. " + CTRL + down", exec("~/.config/hypr/scripts/workspace-monitor-step.sh next"))
+-- Focus verticale tra finestre; nello scrolling naviga nella colonna.
+bind(mainMod .. " + CTRL + up", hl.dsp.focus({ direction = "u" }))
+bind(mainMod .. " + CTRL + down", hl.dsp.focus({ direction = "d" }))
 
 -- Mouse wheel workspace navigation
 bind(mainMod .. " + mouse_up", exec("~/.config/hypr/scripts/workspace-monitor-step.sh prev"))
@@ -196,6 +197,19 @@ end)
 -- Larghezza colonna nello scrolling layout
 bind(mainMod .. " + CTRL + right", hl.dsp.layout("colresize +conf"))
 bind(mainMod .. " + CTRL + left", hl.dsp.layout("colresize -conf"))
+
+-- Scrolling: inserisci nella colonna precedente / estrai in una propria.
+bind(mainMod .. " + I", function()
+  if currentLayout == "scrolling" then
+    hl.dispatch(hl.dsp.layout("consume"))
+  end
+end)
+
+bind(mainMod .. " + O", function()
+  if currentLayout == "scrolling" then
+    hl.dispatch(hl.dsp.layout("expel"))
+  end
+end)
 
 -- ============================================================
 -- Resize
@@ -255,7 +269,7 @@ bind(
 
 bind(mainMod .. " + N", exec("qs -c noctalia-shell ipc call controlCenter toggle"))
 bind(mainMod .. " + SHIFT + N", exec("qs -c noctalia-shell ipc call settings toggle"))
-bind(mainMod .. " + I", exec("qs -c noctalia-shell ipc call wallpaper toggle"))
+bind(mainMod .. " + SHIFT + I", exec("qs -c noctalia-shell ipc call wallpaper toggle"))
 bind(mainMod .. " + CTRL + C", exec("qs -c noctalia-shell ipc call plugin openPanel noctalia-calculator"))
 
 -- ============================================================
@@ -409,8 +423,14 @@ bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
 -- Screenshots
 -- ============================================================
 
-bind(mainMod .. " + S", exec("/home/cobi/.local/bin/hyprshot -m region --clipboard-only"))
-bind(mainMod .. " + SHIFT + S", exec("/home/cobi/.local/bin/hyprshot -m region -o /home/cobi/Pictures/Screenshots"))
+bind(mainMod .. " + S", exec("/usr/bin/bash /home/cobi/.config/hypr/lua/screenshot-region.sh clipboard"))
+bind(mainMod .. " + SHIFT + S", exec("/usr/bin/bash /home/cobi/.config/hypr/lua/screenshot-region.sh save"))
 bind(mainMod .. " + SHIFT + W", exec("/home/cobi/.config/hypr/scripts/screenshot-active-window.sh"))
 bind("CTRL + SHIFT + W", exec("/home/cobi/.local/bin/hyprshot -m window"))
 bind("Print", exec("/home/cobi/.local/bin/hyprshot -m output -o /home/cobi/Pictures/Screenshots"))
+
+-- BEGIN dettatura locale (waystt)
+-- SUPER ALT D resta assegnato al layout dwindle.
+bind(mainMod .. " + D", exec("/home/cobi/.local/bin/dettatura toggle"))
+bind(mainMod .. " + Escape", exec("/home/cobi/.local/bin/dettatura cancel"))
+-- END dettatura locale (waystt)

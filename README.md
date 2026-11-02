@@ -1,161 +1,40 @@
 # fracobi/dotfiles
 
-Personal Linux setup based on:
+Configurazione personale Fedora 44 KDE + Hyprland (Lua), Noctalia/Quickshell,
+Kitty, Zsh/Starship e GNU Stow.
 
-* Hyprland
-* Quickshell / Noctalia
-* Kitty
-* Zsh + Starship
-* Fastfetch
-* GNU Stow
-
-The goal of this repository is to provide a reproducible and easy-to-bootstrap Arch/CachyOS setup with minimal manual configuration.
-
----
-
-# Features
-
-* Hyprland desktop setup
-* Modular Lua-based Hyprland configuration
-* Quickshell / Noctalia shell
-* Kitty terminal configuration
-* Zsh + Starship prompt
-* Fastfetch configuration
-* Clipboard history support
-* Screenshot utilities
-* Brave browser configuration
-* Automatic package installation
-* Automatic config backup
-* GNU Stow-based dotfiles management
-
----
-
-# Installation
-
-## Arch / CachyOS
+**Stato:** configurazioni aggiornate alla macchina attuale; replica completa
+ancora da collaudare. Leggere [audit, dipendenze mancanti e soluzioni](docs/REPLICATION.md)
+prima di installare. Non è un'immagine del disco né un backup dei dati.
 
 ```bash
-sudo pacman -S --needed git
-git clone https://github.com/fracobi/dotfiles.git ~/dotfiles
+sudo dnf install git
+git clone --recurse-submodules https://github.com/fracobi/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-git submodule update --init --recursive
-./bootstrap-arch.sh
+./bootstrap-fedora.sh
 ```
 
-The submodule command initializes bundled components such as the AndroidConnect
-plugin at the exact revision recorded by this repository.
+Il bootstrap Fedora installa le dipendenze del manifest e configura i COPR
+`sdegler/hyprland` e `errornointernet/quickshell`. Richiede il runtime
+`noctalia-qs` compatibile prima di applicare le configurazioni: la build locale
+attuale non ha ancora una ricetta automatica. Vedere l'audit per gli altri blocchi.
 
-After installation:
+Per sole configurazioni, dopo aver installato le dipendenze:
 
 ```bash
-reboot
+./install.sh --dry-run
+./install.sh
+./scripts/check-setup.sh
 ```
 
----
+Stow conserva i file nel clone e crea link in HOME. Non spostare/eliminare il clone.
+I conflitti sono salvati per file in `~/.local/state/dotfiles/backups/`.
+La simulazione segnala conflitti senza modificarli. Nessun servizio viene
+abilitato automaticamente. È possibile usare una HOME di prova:
+`./install.sh /percorso/home-di-prova`.
 
-# What the bootstrap script does
-
-`bootstrap-arch.sh` automatically:
-
-* updates the system
-* installs required pacman packages
-* installs `paru` if missing
-* installs AUR packages
-* applies dotfiles using GNU Stow
-* backs up existing configs automatically
-* sets `zsh` as the default shell
-
----
-
-# Repository Structure
-
-```text
-dotfiles/
-├── hypr/
-├── kitty/
-├── zsh/
-├── starship/
-├── fastfetch/
-├── noctalia/
-├── quickshell/
-├── theming/
-├── packages/
-│   ├── arch.txt
-│   └── aur.txt
-├── install.sh
-└── bootstrap-arch.sh
-```
-
----
-
-# Package Management
-
-## Official repository packages
-
-Packages installed through pacman are listed in:
-
-```text
-packages/arch.txt
-```
-
----
-
-# Dotfiles Management
-
-This repository uses GNU Stow.
-
-Each folder represents a package that gets symlinked into `$HOME`.
-
-Example:
-
-```bash
-stow hypr
-```
-
-creates symlinks from:
-
-```text
-hypr/.config/hypr
-```
-
-to:
-
-```text
-~/.config/hypr
-```
-
----
-
-
-# VM / QEMU Notes
-
-Running Hyprland inside QEMU/virt-manager may require additional configuration.
-
-Known limitations:
-
-* 3D acceleration may not work depending on host configuration
-* monitor scaling and resolutions can behave differently
-* Quickshell rendering may be degraded without GPU acceleration
-
----
-
-# Requirements
-
-Mainly tested on:
-
-* CachyOS
-* Fedora
-
-Other distros are currently unsupported.
-
----
-
-# Screenshots
-
-TODO
-
----
-
-# License
-
-MIT License
+`inventory/` fotografa pacchetti, versioni, Flatpak e repository della macchina
+sorgente; `packages/fedora.txt` è invece il manifest desktop da mantenere.
+Account, segreti, modelli AI, sfondi, dati e driver specifici richiedono procedure
+separate. Gli script Arch/CachyOS sono conservati come materiale storico e non
+sono il percorso supportato o verificato.

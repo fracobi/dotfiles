@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+import json,os,pathlib,time
+root=pathlib.Path(os.environ['XDG_RUNTIME_DIR'])/'dettatura'
+last=None
+while True:
+ try:
+  data=json.loads((root/'status.json').read_text())
+  if not (root/'control.sock').exists() and data.get('state') in ('recording','starting','transcribing'):data={}
+  if data.get('state') not in ('recording','starting','transcribing') and time.time()-data.get('time',0)>6:data={}
+ except (OSError,ValueError):data={}
+ state=data.get('state','idle')
+ text={'starting':'🎙 …','recording':'🎙 REC','transcribing':'🎙 …'}.get(state,'')
+ tooltip=data.get('message') or 'Dettatura: clic avvia/ferma; clic destro annulla. Super+D / Super+Esc'
+ output=json.dumps({'text':text,'icon':'','textColor':'error' if state in ('recording','error') else 'primary' if state in ('starting','transcribing') else 'none','tooltip':tooltip},ensure_ascii=False)
+ if output!=last:print(output,flush=True);last=output
+ time.sleep(.15)

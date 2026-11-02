@@ -1,0 +1,125 @@
+#!/usr/bin/python3
+"""Local PipeWire + whisper.cpp dictation. Private socket, Noctalia indicator."""
+import fcntl,json,os,pathlib,select,signal,socket,subprocess,sys,time,wave,array,math
+HOME=pathlib.Path.home()
+ROOT=pathlib.Path(os.environ['XDG_RUNTIME_DIR'])/'dettatura'
+ROOT.mkdir(mode=0o700,exist_ok=True)
+SOCK=str(ROOT/'control.sock')
+
+def run(args,**kw):
+ return subprocess.run(args,check=True,**kw)
+def notify(message):
+ state='recording' if message.startswith('●') else 'transcribing' if message.startswith('Trascrizione locale') else 'copied' if message.startswith('Focus cambiato') else 'idle' if message.startswith(('Testo inserito','Registrazione annullata','Nessuna registrazione')) else 'error'
+ status={'state':state,'message':message,'time':time.time()}
+ tmp=ROOT/'status.tmp';tmp.write_text(json.dumps(status,ensure_ascii=False));tmp.replace(ROOT/'status.json')
+def set_starting():
+ (ROOT/'status.json').write_text(json.dumps({'state':'starting','message':'Avvio microfono…','time':time.time()}))
+def transcription_command(audio):
+ config={}
+ for line in (HOME/'.config/waystt/.env').read_text().splitlines():
+  if '=' in line and not line.startswith('#'):
+   k,v=line.split('=',1);config[k.strip()]=v.strip()
+ model=HOME/'.local/share/applications/waystt/models'/config.get('WHISPER_MODEL','ggml-base.bin')
+ return [str(HOME/'.local/share/whisper.cpp/build/bin/whisper-cli'),'-m',str(model),'-f',str(audio),'-l','it','-t','4','-bs',config.get('WHISPER_BEAM_SIZE','5'),'-bo','1','-nf','-nt','-np']
+def has_audio(path):
+ with wave.open(str(path),'rb') as w:
+  if w.getnframes()<w.getframerate()*.3:return False
+  samples=array.array('h',w.readframes(w.getnframes()))
+  return bool(samples) and math.sqrt(sum(float(v)*v for v in samples)/len(samples))/32768>.002
+def window():
+ return json.loads(subprocess.check_output(['hyprctl','activewindow','-j']))
+def paste(text,target):
+ if not text.strip():
+  notify('Nessun testo riconosciuto.');return
+ if window().get('address')!=target.get('address'):
+  notify('Focus cambiato: testo copiato, incolla manualmente.')
+  run(['wl-copy','--type','text/plain;charset=utf-8'],input=text.encode());return
+ run(['wl-copy','--type','text/plain;charset=utf-8'],input=text.encode())
+ # Paste, never synthesize Return. Kitty receives bracketed paste.
+ mods=['ctrl','shift'] if target.get('class','').lower() in ('kitty','alacritty','foot','org.wezfurlong.wezterm','org.gnome.ptyxis') else ['ctrl']
+ time.sleep(.3)
+ code='hl.dispatch(hl.dsp.send_shortcut({mods='+json.dumps(' '.join(mods).upper())+',key="v",window='+json.dumps('address:'+target['address'])+'}))'
+ run(['hyprctl','eval',code],stdout=subprocess.DEVNULL)
+ notify('Testo inserito. Correggi e invia manualmente.')
+
+def worker():
+ lock=open(ROOT/'lock','w')
+ try: fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+ except BlockingIOError: return
+ pathlib.Path(SOCK).unlink(missing_ok=True)
+ server=socket.socket(socket.AF_UNIX);server.bind(SOCK);os.chmod(SOCK,0o600);server.listen(4)
+ p=None
+ def stop(*_): raise InterruptedError()
+ signal.signal(signal.SIGTERM,stop);signal.signal(signal.SIGINT,stop)
+ try:
+  ready,_,_=select.select([server],[],[],5)
+  if not ready:return
+  c,_=server.accept();c.settimeout(1);cmd=c.recv(32).decode();c.sendall(b'ok');c.close()
+  if cmd!='toggle':return
+  target=window()
+  if not target.get('address'):notify('Nessuna finestra attiva.');return
+  with open(ROOT/'text','w+',encoding='utf-8',errors='replace') as out,open(ROOT/'log','w+') as err:
+   audio=ROOT/'audio.wav'
+   set_starting()
+   p=subprocess.Popen(['pw-record','--rate','16000','--channels','1','--format','s16',str(audio)],stdout=subprocess.DEVNULL,stderr=err)
+   started=time.monotonic();state='starting';deadline=started+300
+   while True:
+    if p.poll() is not None:
+     if state!='transcribing' or p.returncode:notify('Errore di registrazione o trascrizione. Riprova.');return
+     out.seek(0);paste(out.read().strip(),target)
+     return
+    if time.monotonic()>deadline:notify('Tempo massimo raggiunto: dettatura annullata.');return
+    if state=='starting' and time.monotonic()-started>.2:
+     state='recording';notify('● Registrazione attiva — Super+D ferma; Super+Esc annulla.')
+    readable,_,_=select.select([server],[],[],.1)
+    if readable:
+     c,_=server.accept();c.settimeout(1);cmd=c.recv(32).decode();c.sendall(b'busy' if cmd=='toggle' and state=='transcribing' else b'ok');c.close()
+     if cmd=='cancel':notify('Registrazione annullata.');return
+     if cmd=='toggle' and state in ('starting','recording'):
+      p.send_signal(signal.SIGINT)
+      try:p.wait(timeout=2)
+      except subprocess.TimeoutExpired:p.kill();p.wait();notify('Errore arresto microfono.');return
+      if not has_audio(audio):notify('Nessun audio rilevato.');return
+      state='transcribing';deadline=time.monotonic()+180
+      notify('Trascrizione locale in corso…')
+      p=subprocess.Popen(transcription_command(audio),stdout=out,stderr=err)
+ except InterruptedError: pass
+ except Exception:
+  notify('Errore dettatura. Il testo, se disponibile, resta negli appunti.')
+ finally:
+  if p is not None and p.poll() is None:
+   p.terminate()
+   try:p.wait(timeout=2)
+   except subprocess.TimeoutExpired:p.kill();p.wait()
+  server.close();pathlib.Path(SOCK).unlink(missing_ok=True)
+  for name in ('text','log','audio.wav'):(ROOT/name).unlink(missing_ok=True)
+
+def client(cmd):
+ def send():
+  with socket.socket(socket.AF_UNIX) as sock:
+   sock.settimeout(1)
+   try:sock.connect(SOCK)
+   except (FileNotFoundError,ConnectionRefusedError):return False
+   # Once sent, never resend a toggle: that could reverse the action.
+   sock.sendall(cmd.encode())
+   try:reply=sock.recv(32)
+   except socket.timeout:
+    notify('Controllo non risponde: riprova o annulla.');return True
+   if not reply:notify('Comando non confermato: riprova.');return True
+   return True
+ try:
+  if send():return
+  if cmd=='cancel':notify('Nessuna registrazione attiva.');return
+  subprocess.Popen([sys.executable,__file__,'worker'],start_new_session=True,stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+  for _ in range(100):
+   time.sleep(.01)
+   if send():return
+  notify('Impossibile avviare la dettatura.')
+ except OSError:
+  notify('Errore nel controllo della dettatura. Riprova.')
+if __name__=='__main__':
+ os.umask(0o077)
+ command=sys.argv[1] if len(sys.argv)>1 else 'toggle'
+ if command=='worker':worker()
+ elif command in ('toggle','cancel'):client(command)
+ else:sys.exit('Uso: dettatura [toggle|cancel]')

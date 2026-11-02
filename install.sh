@@ -1,67 +1,39 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 cd "$(dirname "$0")"
-
+REPO="$PWD"
+DRY_RUN=0
+if [[ ${1:-} == --dry-run ]]; then DRY_RUN=1; shift; fi
 TARGET_DIR="${1:-$HOME}"
-
-echo "== Dotfiles install =="
-echo "Target: $TARGET_DIR"
-
-if ! command -v stow >/dev/null 2>&1; then
-  echo "GNU Stow is not installed."
-  echo "Fedora: sudo dnf install stow"
-  echo "Arch: sudo pacman -S stow"
-  exit 1
+[[ -d "$TARGET_DIR" ]] || { echo "Target directory does not exist" >&2; exit 1; }
+TARGET_DIR="$(cd "$TARGET_DIR" && pwd -P)"
+command -v stow >/dev/null || { echo 'Install GNU Stow first.' >&2; exit 1; }
+PACKAGES=(hypr kitty starship zsh brave fastfetch noctalia quickshell theming desktop local-bin)
+# Back up individual conflicts only: never move all of ~/.config/systemd/user.
+if (( DRY_RUN )); then
+  stow --simulate --verbose --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
+  exit
 fi
-
-backup_if_real_path() {
-  local path="$1"
-
-  if [ -e "$path" ] && [ ! -L "$path" ]; then
-    local backup="${path}.backup-before-stow"
-
-    echo "Backing up existing path:"
-    echo "  $path -> $backup"
-
-    if [ -e "$backup" ]; then
-      backup="${path}.backup-before-stow.$(date +%Y%m%d-%H%M%S)"
-      echo "Backup already exists, using:"
-      echo "  $backup"
-    fi
-
-    mv "$path" "$backup"
-  fi
-}
-
-backup_if_real_path "$TARGET_DIR/.zshrc"
-backup_if_real_path "$TARGET_DIR/.config/hypr"
-backup_if_real_path "$TARGET_DIR/.config/kitty"
-backup_if_real_path "$TARGET_DIR/.config/fastfetch"
-backup_if_real_path "$TARGET_DIR/.config/noctalia"
-backup_if_real_path "$TARGET_DIR/.config/quickshell"
-backup_if_real_path "$TARGET_DIR/.config/gtk-3.0"
-backup_if_real_path "$TARGET_DIR/.config/Kvantum"
-
-PACKAGES=(
-  hypr
-  kitty
-  starship
-  zsh
-  brave
-  fastfetch
-  noctalia
-  quickshell
-  theming
-)
-
+BACKUP="$TARGET_DIR/.local/state/dotfiles/backups/$(date +%Y%m%d-%H%M%S)-$$"
 for package in "${PACKAGES[@]}"; do
-  if [ -d "$package" ]; then
-    echo "Stowing $package..."
-    stow -t "$TARGET_DIR" "$package"
-  else
-    echo "Skipping $package: directory not found"
-  fi
+  while IFS= read -r -d '' source; do
+    relative="${source#"$package/"}"
+    target="$TARGET_DIR/$relative"
+    # A link already pointing at this source is managed, including folded directories.
+    [[ $(readlink -f "$target" 2>/dev/null || true) == "$REPO/$source" ]] && continue
+    parent="$(dirname "$target")"
+    while [[ "$parent" != "$TARGET_DIR" ]]; do
+      if [[ -L "$parent" || ( -e "$parent" && ! -d "$parent" ) ]]; then
+        echo "Refusing obstructing parent: $parent" >&2; exit 1
+      fi
+      parent="$(dirname "$parent")"
+    done
+    if [[ -e "$target" || -L "$target" ]]; then
+      mkdir -p "$BACKUP/$(dirname "$relative")"
+      mv -- "$target" "$BACKUP/$relative"
+      echo "Backup: $BACKUP/$relative"
+    fi
+  done < <(find "$package" \( -name .git -o -name .github \) -prune -o \( -type f -o -type l \) ! -name '*.bak' ! -name '*.bak-*' ! -name '*.backup-*' ! -name '*.save' ! -name '*.save.*' -print0)
 done
-
-echo "Done."
+stow --no-folding --target="$TARGET_DIR" "${PACKAGES[@]}"
+echo 'Dotfiles installed. Services are not automatically enabled or started.'

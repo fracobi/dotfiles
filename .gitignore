@@ -18,3 +18,13 @@ theming/.config/gtk-3.0/bookmarks
 __pycache__/
 *.py[cod]
 *.log
+
+# Editor snapshots and machine-local overrides
+**/*.backup-*
+**/*.scroll-backup-*
+**/*.save
+**/*.save.*
+**/.env
+**/.env.*
+**/local.lua
+.zshrc.local
