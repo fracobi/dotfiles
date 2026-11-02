@@ -34,3 +34,6 @@ __pycache__/
 
 # Generated workspace-layout state, not a portable profile
 hypr/.config/hypr/hyprdrive/
+
+# Public monitor example; actual machine profiles remain ignored
+!examples/local.lua
